@@ -4,7 +4,7 @@
   <title><![CDATA[薛映冰的代码狂躁症]]></title>
   <link href="http://yingbing.github.io/atom.xml" rel="self"/>
   <link href="http://yingbing.github.io/"/>
-  <updated>2014-11-28T16:38:41+08:00</updated>
+  <updated>2014-11-28T18:00:34+08:00</updated>
   <id>http://yingbing.github.io/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,5 +12,23 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[第一篇博客]]></title>
+    <link href="http://yingbing.github.io/blog/2014/11/28/test-blog/"/>
+    <updated>2014-11-28T16:49:23+08:00</updated>
+    <id>http://yingbing.github.io/blog/2014/11/28/test-blog</id>
+    <content type="html"><![CDATA[<p>这是我的第一篇Octopress博客</p>
+
+<p>测试代码</p>
+
+<figure class='code'><figcaption><span>Javascript Array Syntax</span><a href='http://j.mp/pPUUmW'>MDN Documentation </a></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span> <span class="nx">element1</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">elementN</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+]]></content>
+  </entry>
   
 </feed>
