@@ -9,12 +9,9 @@
   <meta name="author" content="ICE">
 
   
-  <meta name="description" content="一、测试文字 这是我的第一篇Octopress博客
-很不错的样子哦
-感觉可以用 二、测试代码 1、带文件名的代码 Javascript Array Syntax 1
-2
-var arr1 = new Array(arrayLength);
-var arr2 = new Array(element0 &hellip;">
+  <meta name="description" content="今天把博客几篇博客从csdn搬过来 主要是把几个算法的搬过来
+其它的就不搬了，第一搬的成本太高，第二搬了也没有什么用，所以其它的就放着了. 以前太浮躁了，都不知道要低调，所有写的代码都是为了装13，现在发现自己的基础实太差了，开始重头开始学习大学的课程。
+有人说，你工作的时候上司会叫你定排序算法吗 &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -70,6 +67,110 @@ var arr2 = new Array(element0 &hellip;">
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/12/bubble-sort/">Bubble-sort</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2014-12-12T14:17:13+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:17 pm</span></time>
+        
+           | <a href="/blog/2014/12/12/bubble-sort/#disqus_thread"
+             data-disqus-identifier="http://yingbing.github.io/blog/2014/12/12/bubble-sort/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天把博客几篇博客从csdn搬过来</p>
+
+<p>主要是把几个算法的搬过来
+其它的就不搬了，第一搬的成本太高，第二搬了也没有什么用，所以其它的就放着了.</p>
+
+<p>以前太浮躁了，都不知道要低调，所有写的代码都是为了装13，现在发现自己的基础实太差了，开始重头开始学习大学的课程。
+有人说，你工作的时候上司会叫你定排序算法吗？也许是不会，但是如果基咄都不好的话，是没有办法往深层次地去发展的。我不知道谁说的代码是一碗青春饭，谁是这个谣言的始作俑者我也不想知道，但是这个谣言的结果就是所有的程序员都想要去转管理，没有办法把心思放在提高代码的质量上。
+我也很想搞acm，因为acm不仅可以锻炼思维，也可以培养抽象的能力。不过这一切都不算太晚，现在开始咯。
+你认为最迟的时候恰恰是最早的时候！</p>
+
+<p>冒泡排序的算法简单我就不想说了，这是wiki的简介：<a href="http://en.wikipedia.org/wiki/Bubble_sort">http://en.wikipedia.org/wiki/Bubble_sort</a>
+另外附上两幅图片（来自wiki）:</p>
+
+<p><img src="/images/2014-12-12-bubble-sort/1.gif"><br/>
+<img src="/images/2014-12-12-bubble-sort/2.gif"></p>
+
+<figure class='code'><figcaption><span>BubbleSort </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BubbleSort</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">8</span><span class="o">,</span><span class="mi">9</span><span class="o">,</span><span class="mi">45</span><span class="o">,</span><span class="mi">23</span><span class="o">,</span><span class="mi">87</span><span class="o">,</span><span class="mi">34</span><span class="o">,</span><span class="mi">65</span><span class="o">};</span>
+</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">a</span><span class="o">){</span>
+</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="s">&quot; &quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BubbleSort</span><span class="o">().</span><span class="na">excute</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">a</span><span class="o">){</span>
+</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="s">&quot; &quot;</span><span class="o">);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">excute</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+</span><span class='line'>                    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+</span><span class='line'>                    <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]=</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+</span><span class='line'>                    <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]=</span><span class="n">temp</span><span class="o">;</span>
+</span><span class='line'>                <span class="o">}</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'><span class="o">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -187,6 +288,10 @@ var arr2 = new Array(element0 &hellip;">
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/12/12/bubble-sort/">Bubble-sort</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2014/11/28/test-blog/">第一篇博客</a>
