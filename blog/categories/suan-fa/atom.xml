@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 算法 | 薛映冰的代码狂躁症]]></title>
+  <link href="http://yingbing.github.io/blog/categories/suan-fa/atom.xml" rel="self"/>
+  <link href="http://yingbing.github.io/"/>
+  <updated>2014-12-12T14:50:43+08:00</updated>
+  <id>http://yingbing.github.io/</id>
+  <author>
+    <name><![CDATA[ICE]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[排序算法第三章 插入排序]]></title>
+    <link href="http://yingbing.github.io/blog/2014/12/12/insertion-sort/"/>
+    <updated>2014-12-12T14:45:36+08:00</updated>
+    <id>http://yingbing.github.io/blog/2014/12/12/insertion-sort</id>
+    <content type="html"><![CDATA[<p>从现在开始，我会尝试用我自己的话来表达一些算法，如果说得不好，请见谅。</p>
+
+<p>插入排序主要步骤分为以下几部分：<br/>
+1、从第2个元素开始把元素一个一个拿出来<br/>
+2、把拿出来的元素从后向前一个一个比较，如果被比较的数大于拿出来的元素，则被比较的数向后移一位<br/>
+3、当拿出来的元素小于等于被比较数时，把拿出来的元素存入被比较数的下一个位置</p>
+
+<p>以上就是插入排序啦，附上图片一张，并贴上wiki的链接： <a href="http://en.wikipedia.org/wiki/Insertion_sort">http://en.wikipedia.org/wiki/Insertion_sort</a>
+最后附上一张排序图（图片来自wiki）:</p>
+
+<p><img src="/images/2014-12-12-insertion-sort/1.gif"></p>
+
+<p><figure class='code'><figcaption><span>InsertionSort.java </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InsertionSort</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">8</span><span class="o">,</span><span class="mi">9</span><span class="o">,</span><span class="mi">45</span><span class="o">,</span><span class="mi">23</span><span class="o">,</span><span class="mi">87</span><span class="o">,</span><span class="mi">34</span><span class="o">,</span><span class="mi">65</span><span class="o">};</span>
+</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">a</span><span class="o">){</span>
+</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span><span class="o">+&amp;</span><span class="n">ldquo</span><span class="o">;</span> <span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">InsertionSort</span><span class="o">().</span><span class="na">excute</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">a</span><span class="o">){</span>
+</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span><span class="o">+&amp;</span><span class="n">ldquo</span><span class="o">;</span> <span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">excute</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">){</span>
+</span><span class='line'>    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">while</span><span class="o">(</span><span class="n">j</span> <span class="o">&amp;</span><span class="n">gt</span><span class="o">;</span> <span class="mi">0</span> <span class="o">&amp;</span><span class="n">amp</span><span class="o">;&amp;</span><span class="n">amp</span><span class="o">;</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&amp;</span><span class="n">gt</span><span class="o">;</span> <span class="n">temp</span><span class="o">){</span>
+</span><span class='line'>            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+</span><span class='line'>            <span class="n">j</span><span class="o">--;</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[排序算法第二章 快速排序]]></title>
+    <link href="http://yingbing.github.io/blog/2014/12/12/quick-sort/"/>
+    <updated>2014-12-12T14:39:21+08:00</updated>
+    <id>http://yingbing.github.io/blog/2014/12/12/quick-sort</id>
+    <content type="html"><![CDATA[<p>先把快速排序的代码实现贴上来，太晚了，过程改天再加上！！！</p>
+
+<p>快速排序就是把一个数拿出来，然后把小于这个数的扔到一边，把大于它的扔到一边，那这个数就在正确的位置上了,然后把这个数的左边分成一份，右边分成一份，再把这两份进行刚才的做法，一直不停地这样做，直到不能再分。</p>
+
+<p>接下来就要说明怎么把小于它的数扔到一边，大于它的数扔到一边<br/>
+1、拿出第一个数temp，那第一个数的位置就空了出来<br/>
+2、从后向前找，找到小于temp的数，记住位置i，把小于temp的数扔到刚才空出来的位置，那 i 的位置又空了出来，<br/>
+3、从前向后找，找到大于temp的数，记住位置j，把大于temp的数扔到刚才空出来的位置，那 j 的位置又空了出来，<br/>
+4、重复2，3，直到向前找跟向后找相遇，把temp放在相遇的位置
+5、把数组从这个数的位置分成两部分，分别进行1，2，3，4，做完不能再做的时候就停了，^ _ ^</p>
+
+<p>老规矩，附上wiki的地址： <a href="http://en.wikipedia.org/wiki/Quicksort">http://en.wikipedia.org/wiki/Quicksort</a>
+再附上两张排序的图片（来自wiki）：</p>
+
+<p><img src="/images/2014-12-12-quick-sort/1.png"><br/>
+<img src="/images/2014-12-12-quick-sort/2.png"></p>
+
+<p><figure class='code'><figcaption><span>Quicksort.java </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Quicksort</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="mi">45</span><span class="o">,</span> <span class="mi">23</span><span class="o">,</span> <span class="mi">87</span><span class="o">,</span> <span class="mi">34</span><span class="o">,</span> <span class="mi">65</span> <span class="o">};</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">:</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;</span> <span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Quicksort</span><span class="o">().</span><span class="na">excute</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">:</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="o">&amp;</span><span class="n">ldquo</span><span class="o">;</span> <span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">excute</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">[],</span> <span class="kt">int</span> <span class="n">left</span><span class="o">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">(</span><span class="n">left</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">left</span><span class="o">],</span> <span class="n">l</span> <span class="o">=</span> <span class="n">left</span><span class="o">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">right</span><span class="o">;</span>
+</span><span class='line'>        <span class="k">while</span> <span class="o">(</span><span class="n">l</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">while</span> <span class="o">(</span><span class="n">l</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;</span> <span class="n">r</span> <span class="o">&amp;</span><span class="n">amp</span><span class="o">;&amp;</span><span class="n">amp</span><span class="o">;</span> <span class="n">a</span><span class="o">[</span><span class="n">r</span><span class="o">]</span> <span class="o">&amp;</span><span class="n">gt</span><span class="o">;</span> <span class="n">temp</span><span class="o">)</span>
+</span><span class='line'>                <span class="n">r</span><span class="o">--;</span>
+</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">l</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">a</span><span class="o">[</span><span class="n">l</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">r</span><span class="o">];</span>
+</span><span class='line'>                <span class="n">l</span><span class="o">++;</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>
+</span><span class='line'>            <span class="k">while</span> <span class="o">(</span><span class="n">l</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;</span> <span class="n">r</span> <span class="o">&amp;</span><span class="n">amp</span><span class="o">;&amp;</span><span class="n">amp</span><span class="o">;</span> <span class="n">a</span><span class="o">[</span><span class="n">l</span><span class="o">]</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;</span> <span class="n">temp</span><span class="o">)</span>
+</span><span class='line'>                <span class="n">l</span><span class="o">++;</span>
+</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">l</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>                <span class="n">a</span><span class="o">[</span><span class="n">r</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">l</span><span class="o">];</span>
+</span><span class='line'>                <span class="n">r</span><span class="o">--;</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">a</span><span class="o">[</span><span class="n">l</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+</span><span class='line'>        <span class="n">excute</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">left</span><span class="o">,</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
+</span><span class='line'>        <span class="n">excute</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">right</span><span class="o">);</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[排序算法 第一章 冒泡排序]]></title>
+    <link href="http://yingbing.github.io/blog/2014/12/12/bubble-sort/"/>
+    <updated>2014-12-12T14:17:13+08:00</updated>
+    <id>http://yingbing.github.io/blog/2014/12/12/bubble-sort</id>
+    <content type="html"><![CDATA[<p>今天把博客几篇博客从csdn搬过来</p>
+
+<p>主要是把几个算法的搬过来
+其它的就不搬了，第一搬的成本太高，第二搬了也没有什么用，所以其它的就放着了.</p>
+
+<p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-我是分隔线&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</p>
+
+<p>以前太浮躁了，都不知道要低调，所有写的代码都是为了装13，现在发现自己的基础实太差了，开始重头开始学习大学的课程。<br/>
+有人说，你工作的时候上司会叫你定排序算法吗？也许是不会，但是如果基咄都不好的话，是没有办法往深层次地去发展的。<br/>
+我不知道谁说的代码是一碗青春饭，谁是这个谣言的始作俑者我也不想知道，但是这个谣言的结果就是所有的程序员都想要去转管理，没有办法把心思放在提高代码的质量上。<br/>
+我也很想搞acm，因为acm不仅可以锻炼思维，也可以培养抽象的能力。不过这一切都不算太晚，现在开始咯。<br/>
+你认为最迟的时候恰恰是最早的时候！</p>
+
+<p>冒泡排序的算法简单我就不想说了，这是wiki的简介：<a href="http://en.wikipedia.org/wiki/Bubble_sort">http://en.wikipedia.org/wiki/Bubble_sort</a>
+另外附上两幅图片（来自wiki）:</p>
+
+<p><img src="/images/2014-12-12-bubble-sort/1.gif"><br/>
+<img src="/images/2014-12-12-bubble-sort/2.gif"></p>
+
+<p><figure class='code'><figcaption><span>BubbleSort.java </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BubbleSort</span> <span class="o">{</span>
+</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">8</span><span class="o">,</span><span class="mi">9</span><span class="o">,</span><span class="mi">45</span><span class="o">,</span><span class="mi">23</span><span class="o">,</span><span class="mi">87</span><span class="o">,</span><span class="mi">34</span><span class="o">,</span><span class="mi">65</span><span class="o">};</span>
+</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">a</span><span class="o">){</span>
+</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span><span class="o">+&amp;</span><span class="n">ldquo</span><span class="o">;</span> <span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
+</span><span class='line'>        <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BubbleSort</span><span class="o">().</span><span class="na">excute</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
+</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">a</span><span class="o">){</span>
+</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span><span class="o">+&amp;</span><span class="n">ldquo</span><span class="o">;</span> <span class="o">&amp;</span><span class="n">rdquo</span><span class="o">;);</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">excute</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&amp;</span><span class="n">gt</span><span class="o">;</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&amp;</span><span class="n">lt</span><span class="o">;</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
+</span><span class='line'>            <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&amp;</span><span class="n">gt</span><span class="o">;</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
+</span><span class='line'>                <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+</span><span class='line'>                <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]=</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
+</span><span class='line'>                <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]=</span><span class="n">temp</span><span class="o">;</span>
+</span><span class='line'>            <span class="o">}</span>
+</span><span class='line'>        <span class="o">}</span>
+</span><span class='line'>    <span class="o">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
+</span><span class='line'><span class="o">}</span>
+</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;}</span>
+</span></code></pre></td></tr></table></div></figure></p>
+]]></content>
+  </entry>
+  
+</feed>
