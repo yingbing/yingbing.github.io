@@ -4,7 +4,7 @@
   <title><![CDATA[薛映冰的代码狂躁症]]></title>
   <link href="http://yingbing.github.io/atom.xml" rel="self"/>
   <link href="http://yingbing.github.io/"/>
-  <updated>2014-12-12T23:15:42+08:00</updated>
+  <updated>2015-01-20T12:00:00+08:00</updated>
   <id>http://yingbing.github.io/</id>
   <author>
     <name><![CDATA[ICE]]></name>
@@ -14,47 +14,133 @@
 
   
   <entry>
-    <title type="html"><![CDATA[算法概述]]></title>
-    <link href="http://yingbing.github.io/blog/2014/12/12/algorithmns-overview/"/>
-    <updated>2014-12-12T22:32:47+08:00</updated>
-    <id>http://yingbing.github.io/blog/2014/12/12/algorithmns-overview</id>
-    <content type="html"><![CDATA[<p>算法是一门特别有趣有学科，我并不想去深究它的概念，就贴一下wiki吧：<br/>
-<a href="http://en.wikipedia.org/wiki/Algorithm">http://en.wikipedia.org/wiki/Algorithm</a></p>
+    <title type="html"><![CDATA[正则表达式]]></title>
+    <link href="http://yingbing.github.io/blog/2014/12/27/regular-expression/"/>
+    <updated>2014-12-27T10:45:09+08:00</updated>
+    <id>http://yingbing.github.io/blog/2014/12/27/regular-expression</id>
+    <content type="html"><![CDATA[<h3>一、正则表达式概述</h3>
 
-<p>写这篇文章就为了记录一下我已经了解的算法分类，也算是一个目录吧</p>
+<p>学习一个东西，就要知道它的三个方面：<br/>
+1、这是什么东西<br/>
+2、它可以用来干什么<br/>
+3、怎么用它</p>
 
-<p>经典的算法分类：<br/>
-1、分治算法<br/>
-2、动态规划算法<br/>
-3、回溯法<br/>
-4、贪心算法<br/>
-5、分支限界算法<br/>
-6、balabala（如果我的知识可以让我了解到更多再补充）</p>
+<p>正则表达式是用来描述、匹配符合某个句法规则的字符串，可以用来检查字符串格式、搜索、替换一些符合某些规则的文本。</p>
 
-<p>排序算法列表：<br/>
-1、冒泡排序  <a href="http://yingbing.github.io/blog/2014/12/12/bubble-sort/">http://yingbing.github.io/blog/2014/12/12/bubble-sort/</a> <br/>
-2、快速排序  <a href="http://yingbing.github.io/blog/2014/12/12/quick-sort/">http://yingbing.github.io/blog/2014/12/12/quick-sort/</a> <br/>
-3、插入排序  <a href="http://yingbing.github.io/blog/2014/12/12/insertion-sort/">http://yingbing.github.io/blog/2014/12/12/insertion-sort/</a> <br/>
-4、选择排序<br/>
-5、希尔排序<br/>
-6、归并排序<br/>
-7、堆排序<br/>
-8、计数排序<br/>
-9、桶排序<br/>
-10、基数排序<br/>
-11、balabala(其它的排序再说吧)</p>
+<!--more-->
 
-<p>再说一下其它的一些经典算法吧：<br/>
-1、树数<br/>
-2、图<br/>
-3、待续</p>
 
-<p>学算法，计算算法复杂度还是需要的，所以再学一些数学吧</p>
+<h3>二、正则表达式怎么用</h3>
 
-<p>参考文档：<br/>
-白话经典算法系列：<a href="http://blog.csdn.net/column/details/algorithm-easyword.html">http://blog.csdn.net/column/details/algorithm-easyword.html</a>  <br/>
-五大经典算法：<a href="http://www.cnblogs.com/steven_oyj/category/246990.html">http://www.cnblogs.com/steven_oyj/category/246990.html</a>  <br/>
-结构之法 算法之道 <a href="http://blog.csdn.net/v_july_v">http://blog.csdn.net/v_july_v</a></p>
+<p>正则表达式一般是用以下几种表字符来</p>
+
+<h4>1、特殊字符</h4>
+
+<p>正则表达式中一共有12个特殊字符，分别为：<code>[</code> <code>]</code> <code>\</code> <code>^</code> <code>$</code> <code>.</code> <code>|</code> <code>?</code> <code>*</code> <code>+</code> <code>(</code> <code>)</code><br/>
+这些字符如果需要用作文本符的话，则需要使用转义字符，这些字符的含义：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">字符 </th>
+<th style="text-align:left;"> 说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">[ </td>
+<td style="text-align:left;">字符集合开始</td>
+</tr>
+<tr>
+<td style="text-align:center;">] </td>
+<td style="text-align:left;">字符集合结束</td>
+</tr>
+<tr>
+<td style="text-align:center;">( </td>
+<td style="text-align:left;">分组左括号</td>
+</tr>
+<tr>
+<td style="text-align:center;">) </td>
+<td style="text-align:left;">分组右括号</td>
+</tr>
+<tr>
+<td style="text-align:center;">\ </td>
+<td style="text-align:left;">转义</td>
+</tr>
+<tr>
+<td style="text-align:center;">^ </td>
+<td style="text-align:left;">匹配字符串的开始（取反）</td>
+</tr>
+<tr>
+<td style="text-align:center;">$ </td>
+<td style="text-align:left;">匹配字符串的结束</td>
+</tr>
+<tr>
+<td style="text-align:center;">. </td>
+<td style="text-align:left;">匹配除换行符以外的任意字符</td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td style="text-align:left;"> </td>
+</tr>
+<tr>
+<td style="text-align:center;">? </td>
+<td style="text-align:left;">重复零次或一次</td>
+</tr>
+<tr>
+<td style="text-align:center;">* </td>
+<td style="text-align:left;">重复零次或更多次</td>
+</tr>
+<tr>
+<td style="text-align:center;">+ </td>
+<td style="text-align:left;">重复一次或更多次</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>这些字符分别代表什么意思，后面会一个一个地讲。</p>
+
+<h4>2、元字符</h4>
+
+<h4>3、转义字符</h4>
+
+<h4>4、</h4>
+
+<p>写到一半，有空再补上吧，实在不好意思，因为强迫症就先推上来咯。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">左对齐表头 </th>
+<th style="text-align:center;"> 中间对齐表头 </th>
+<th style="text-align:right;"> 右对齐表头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">左对齐数据 </td>
+<td style="text-align:center;">中间对齐数据  </td>
+<td style="text-align:right;">右对齐数据</td>
+</tr>
+<tr>
+<td style="text-align:left;">第二行数据 </td>
+<td style="text-align:center;">也是第二行    </td>
+<td style="text-align:right;">还是第二行</td>
+</tr>
+<tr>
+<td style="text-align:left;">懒得写了&hellip;</td>
+<td style="text-align:center;">&hellip;..         </td>
+<td style="text-align:right;">&hellip;..</td>
+</tr>
+<tr>
+<td style="text-align:left;">长数据，以便看出表头的对齐</td>
+<td style="text-align:center;">长数据，以便看出表头的对齐</td>
+<td style="text-align:right;">长数据，以便看出表头的对齐</td>
+</tr>
+</tbody>
+</table>
+
 ]]></content>
   </entry>
   
@@ -69,6 +155,9 @@
 1、从第2个元素开始把元素一个一个拿出来<br/>
 2、把拿出来的元素从后向前一个一个比较，如果被比较的数大于拿出来的元素，则被比较的数向后移一位<br/>
 3、当拿出来的元素小于等于被比较数时，把拿出来的元素存入被比较数的下一个位置</p>
+
+<!--more-->
+
 
 <p>以上就是插入排序啦，附上图片一张，并贴上wiki的链接： <a href="http://en.wikipedia.org/wiki/Insertion_sort">http://en.wikipedia.org/wiki/Insertion_sort</a>
 最后附上一张排序图（图片来自wiki）:</p>
@@ -141,6 +230,9 @@
     <content type="html"><![CDATA[<p>先把快速排序的代码实现贴上来，太晚了，过程改天再加上！！！</p>
 
 <p>快速排序就是把一个数拿出来，然后把小于这个数的扔到一边，把大于它的扔到一边，那这个数就在正确的位置上了,然后把这个数的左边分成一份，右边分成一份，再把这两份进行刚才的做法，一直不停地这样做，直到不能再分。</p>
+
+<!--more-->
+
 
 <p>接下来就要说明怎么把小于它的数扔到一边，大于它的数扔到一边<br/>
 1、拿出第一个数temp，那第一个数的位置就空了出来<br/>
@@ -247,6 +339,9 @@
 <p>主要是把几个算法的搬过来
 其它的就不搬了，第一搬的成本太高，第二搬了也没有什么用，所以其它的就放着了.</p>
 
+<!--more-->
+
+
 <p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-我是分隔线&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</p>
 
 <p>以前太浮躁了，都不知道要低调，所有写的代码都是为了装13，现在发现自己的基础实太差了，开始重头开始学习大学的课程。<br/>
@@ -322,6 +417,56 @@
   </entry>
   
   <entry>
+    <title type="html"><![CDATA[算法概述]]></title>
+    <link href="http://yingbing.github.io/blog/2014/12/12/algorithmns-overview/"/>
+    <updated>2014-12-12T11:32:47+08:00</updated>
+    <id>http://yingbing.github.io/blog/2014/12/12/algorithmns-overview</id>
+    <content type="html"><![CDATA[<p>算法是一门特别有趣有学科，我并不想去深究它的概念，就贴一下wiki吧：<br/>
+<a href="http://en.wikipedia.org/wiki/Algorithm">http://en.wikipedia.org/wiki/Algorithm</a></p>
+
+<p>写这篇文章就为了记录一下我已经了解的算法分类，也算是一个目录吧</p>
+
+<!--more-->
+
+
+<p>经典的算法分类：<br/>
+1、分治算法<br/>
+2、动态规划算法<br/>
+3、回溯法<br/>
+4、贪心算法<br/>
+5、分支限界算法<br/>
+6、balabala（如果我的知识可以让我了解到更多再补充）</p>
+
+<p>排序算法列表：<br/>
+1、冒泡排序  <a href="http://yingbing.github.io/blog/2014/12/12/bubble-sort/">http://yingbing.github.io/blog/2014/12/12/bubble-sort/</a> <br/>
+2、快速排序  <a href="http://yingbing.github.io/blog/2014/12/12/quick-sort/">http://yingbing.github.io/blog/2014/12/12/quick-sort/</a> <br/>
+3、插入排序  <a href="http://yingbing.github.io/blog/2014/12/12/insertion-sort/">http://yingbing.github.io/blog/2014/12/12/insertion-sort/</a> <br/>
+4、选择排序<br/>
+5、希尔排序<br/>
+6、归并排序<br/>
+7、堆排序<br/>
+8、计数排序<br/>
+9、桶排序<br/>
+10、基数排序<br/>
+11、balabala(其它的排序再说吧)</p>
+
+<p>再说一下其它的一些经典算法吧：<br/>
+1、树数<br/>
+2、图<br/>
+3、待续</p>
+
+<p>23种设计模式：</p>
+
+<p>学算法，计算算法复杂度还是需要的，所以再学一些数学吧</p>
+
+<p>参考文档：<br/>
+白话经典算法系列：<a href="http://blog.csdn.net/column/details/algorithm-easyword.html">http://blog.csdn.net/column/details/algorithm-easyword.html</a>  <br/>
+五大经典算法：<a href="http://www.cnblogs.com/steven_oyj/category/246990.html">http://www.cnblogs.com/steven_oyj/category/246990.html</a>  <br/>
+结构之法 算法之道 <a href="http://blog.csdn.net/v_july_v">http://blog.csdn.net/v_july_v</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[第一篇博客]]></title>
     <link href="http://yingbing.github.io/blog/2014/11/28/test-blog/"/>
     <updated>2014-11-28T16:49:23+08:00</updated>
@@ -331,6 +476,9 @@
 <p>这是我的第一篇Octopress博客<br/>
 很不错的样子哦<br/>
 感觉可以用</p>
+
+<!--more-->
+
 
 <h2>二、测试代码</h2>
 
@@ -391,7 +539,42 @@
 
 <p><a href="http://yingbing.github.io">ICE</a></p>
 
-<h2>五、总结</h2>
+<h2>五、测试表格</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">左对齐表头 </th>
+<th style="text-align:center;"> 中间对齐表头 </th>
+<th style="text-align:right;"> 右对齐表头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">左对齐数据 </td>
+<td style="text-align:center;">中间对齐数据  </td>
+<td style="text-align:right;">右对齐数据</td>
+</tr>
+<tr>
+<td style="text-align:left;">第二行数据 </td>
+<td style="text-align:center;">也是第二行    </td>
+<td style="text-align:right;">还是第二行</td>
+</tr>
+<tr>
+<td style="text-align:left;">懒得写了&hellip;</td>
+<td style="text-align:center;">&hellip;..         </td>
+<td style="text-align:right;">&hellip;..</td>
+</tr>
+<tr>
+<td style="text-align:left;">长数据，以便看出表头的对齐</td>
+<td style="text-align:center;">长数据，以便看出表头的对齐</td>
+<td style="text-align:right;">长数据，以便看出表头的对齐</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>六、总结</h2>
 
 <p>这也算是基本的markdown语法熟悉^ _ ^</p>
 

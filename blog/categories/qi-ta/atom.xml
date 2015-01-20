@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 其它 | 薛映冰的代码狂躁症]]></title>
+  <link href="http://yingbing.github.io/blog/categories/qi-ta/atom.xml" rel="self"/>
+  <link href="http://yingbing.github.io/"/>
+  <updated>2015-01-20T12:00:00+08:00</updated>
+  <id>http://yingbing.github.io/</id>
+  <author>
+    <name><![CDATA[ICE]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[第一篇博客]]></title>
+    <link href="http://yingbing.github.io/blog/2014/11/28/test-blog/"/>
+    <updated>2014-11-28T16:49:23+08:00</updated>
+    <id>http://yingbing.github.io/blog/2014/11/28/test-blog</id>
+    <content type="html"><![CDATA[<h2>一、测试文字</h2>
+
+<p>这是我的第一篇Octopress博客<br/>
+很不错的样子哦<br/>
+感觉可以用</p>
+
+<!--more-->
+
+
+<h2>二、测试代码</h2>
+
+<p>1、带文件名的代码
+<figure class='code'><figcaption><span>Javascript Array Syntax </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
+</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span> <span class="nx">element1</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">hellip</span><span class="p">;,</span> <span class="nx">elementN</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>2、不带文件名的代码
+<code>java
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.print("Hello World!!!");
+    }
+}
+</code></p>
+
+<p>3、不带行号和高亮的代码</p>
+
+<pre><code>System.out.print("Hello World!!!");
+</code></pre>
+
+<p>4、普通代码块：<code>Octopress</code></p>
+
+<h2>三、测试图片</h2>
+
+<p>1、纯图片<br/>
+<img src="/images/2014-11-28-test-blog/1.JPG" width="200"></p>
+
+<p>2、带<code>title</code><br/>
+<img src="/images/2014-11-28-test-blog/2.JPG" width="200" title="杀生丸" ></p>
+
+<p>3、自定义宽度<br/>
+<img src="/images/2014-11-28-test-blog/3.JPG" width="200"></p>
+
+<p>没有设置宽度实难看，都设置了宽度= =|</p>
+
+<!--
+4、自定义`alt`和`title`  
+![Alt文本](/images/2014-11-28-test-blog/3.JPG "title文本")
+ -->
+
+
+<h2>四、测试链接</h2>
+
+<p><a href="http://yingbing.github.io/">http://yingbing.github.io/</a></p>
+
+<p><a href="http://yingbing.github.io">ICE</a></p>
+
+<h2>五、测试表格</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">左对齐表头 </th>
+<th style="text-align:center;"> 中间对齐表头 </th>
+<th style="text-align:right;"> 右对齐表头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">左对齐数据 </td>
+<td style="text-align:center;">中间对齐数据  </td>
+<td style="text-align:right;">右对齐数据</td>
+</tr>
+<tr>
+<td style="text-align:left;">第二行数据 </td>
+<td style="text-align:center;">也是第二行    </td>
+<td style="text-align:right;">还是第二行</td>
+</tr>
+<tr>
+<td style="text-align:left;">懒得写了&hellip;</td>
+<td style="text-align:center;">&hellip;..         </td>
+<td style="text-align:right;">&hellip;..</td>
+</tr>
+<tr>
+<td style="text-align:left;">长数据，以便看出表头的对齐</td>
+<td style="text-align:center;">长数据，以便看出表头的对齐</td>
+<td style="text-align:right;">长数据，以便看出表头的对齐</td>
+</tr>
+</tbody>
+</table>
+
+
+<h2>六、总结</h2>
+
+<p>这也算是基本的markdown语法熟悉^ _ ^</p>
+
+<p>多说弄不好，评论系统还是用disqus。</p>
+
+<p>踏实地学习吧，博客只是用来记录学习的过程。</p>
+
+<p>庸人常立志：从现在开始要卯足火力学习了！！！</p>
+]]></content>
+  </entry>
+  
+</feed>

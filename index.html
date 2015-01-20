@@ -9,13 +9,10 @@
   <meta name="author" content="ICE">
 
   
-  <meta name="description" content="算法是一门特别有趣有学科，我并不想去深究它的概念，就贴一下wiki吧：
-http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我已经了解的算法分类，也算是一个目录吧 经典的算法分类：
-1、分治算法
-2、动态规划算法
-3、回溯法
-4、贪心算法
-5、 &hellip;">
+  <meta name="description" content="一、正则表达式概述 学习一个东西，就要知道它的三个方面：
+1、这是什么东西
+2、它可以用来干什么
+3、怎么用它 正则表达式是用来描述、匹配符合某个句法规则的字符串，可以用来检查字符串格式、搜索、替换一些符合某些规则的文本。 ">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -27,6 +24,7 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
   <link rel="canonical" href="http://yingbing.github.io">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
   <link href="/atom.xml" rel="alternate" title="薛映冰的代码狂躁症" type="application/atom+xml">
   <script src="/javascripts/modernizr-2.0.js"></script>
   <script src="http://ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -77,7 +75,7 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2014/12/12/algorithmns-overview/">算法概述</a></h1>
+      <h1 class="entry-title"><a href="/blog/2014/12/27/regular-expression/">正则表达式</a></h1>
     
     
       <p class="meta">
@@ -86,55 +84,31 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
 
 
 
-<time class='entry-date' datetime='2014-12-12T22:32:47+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>10:32 pm</span></time>
+<time class='entry-date' datetime='2014-12-27T10:45:09+08:00'><span class='date'>2014 年12 月27 日</span> <span class='time'>10:45 am</span></time>
         
-           | <a href="/blog/2014/12/12/algorithmns-overview/#disqus_thread"
-             data-disqus-identifier="http://yingbing.github.io/blog/2014/12/12/algorithmns-overview/">Comments</a>
+           | <a href="/blog/2014/12/27/regular-expression/#disqus_thread"
+             data-disqus-identifier="http://yingbing.github.io/blog/2014/12/27/regular-expression/">Comments</a>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>算法是一门特别有趣有学科，我并不想去深究它的概念，就贴一下wiki吧：<br/>
-<a href="http://en.wikipedia.org/wiki/Algorithm">http://en.wikipedia.org/wiki/Algorithm</a></p>
+  <div class="entry-content"><h3>一、正则表达式概述</h3>
 
-<p>写这篇文章就为了记录一下我已经了解的算法分类，也算是一个目录吧</p>
+<p>学习一个东西，就要知道它的三个方面：<br/>
+1、这是什么东西<br/>
+2、它可以用来干什么<br/>
+3、怎么用它</p>
 
-<p>经典的算法分类：<br/>
-1、分治算法<br/>
-2、动态规划算法<br/>
-3、回溯法<br/>
-4、贪心算法<br/>
-5、分支限界算法<br/>
-6、balabala（如果我的知识可以让我了解到更多再补充）</p>
+<p>正则表达式是用来描述、匹配符合某个句法规则的字符串，可以用来检查字符串格式、搜索、替换一些符合某些规则的文本。</p>
 
-<p>排序算法列表：<br/>
-1、冒泡排序  <a href="http://yingbing.github.io/blog/2014/12/12/bubble-sort/">http://yingbing.github.io/blog/2014/12/12/bubble-sort/</a> <br/>
-2、快速排序  <a href="http://yingbing.github.io/blog/2014/12/12/quick-sort/">http://yingbing.github.io/blog/2014/12/12/quick-sort/</a> <br/>
-3、插入排序  <a href="http://yingbing.github.io/blog/2014/12/12/insertion-sort/">http://yingbing.github.io/blog/2014/12/12/insertion-sort/</a> <br/>
-4、选择排序<br/>
-5、希尔排序<br/>
-6、归并排序<br/>
-7、堆排序<br/>
-8、计数排序<br/>
-9、桶排序<br/>
-10、基数排序<br/>
-11、balabala(其它的排序再说吧)</p>
-
-<p>再说一下其它的一些经典算法吧：<br/>
-1、树数<br/>
-2、图<br/>
-3、待续</p>
-
-<p>学算法，计算算法复杂度还是需要的，所以再学一些数学吧</p>
-
-<p>参考文档：<br/>
-白话经典算法系列：<a href="http://blog.csdn.net/column/details/algorithm-easyword.html">http://blog.csdn.net/column/details/algorithm-easyword.html</a>  <br/>
-五大经典算法：<a href="http://www.cnblogs.com/steven_oyj/category/246990.html">http://www.cnblogs.com/steven_oyj/category/246990.html</a>  <br/>
-结构之法 算法之道 <a href="http://blog.csdn.net/v_july_v">http://blog.csdn.net/v_july_v</a></p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/27/regular-expression/">阅读全文</a>
+    </footer>
   
 
 
@@ -154,7 +128,7 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
 
 
 
-<time class='entry-date' datetime='2014-12-12T14:45:36+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:45 pm</span></time>
+<time class='entry-date' datetime='2014-12-12T14:45:36+08:00'><span class='date'>2014 年12 月12 日</span> <span class='time'>2:45 pm</span></time>
         
            | <a href="/blog/2014/12/12/insertion-sort/#disqus_thread"
              data-disqus-identifier="http://yingbing.github.io/blog/2014/12/12/insertion-sort/">Comments</a>
@@ -171,68 +145,12 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
 2、把拿出来的元素从后向前一个一个比较，如果被比较的数大于拿出来的元素，则被比较的数向后移一位<br/>
 3、当拿出来的元素小于等于被比较数时，把拿出来的元素存入被比较数的下一个位置</p>
 
-<p>以上就是插入排序啦，附上图片一张，并贴上wiki的链接： <a href="http://en.wikipedia.org/wiki/Insertion_sort">http://en.wikipedia.org/wiki/Insertion_sort</a>
-最后附上一张排序图（图片来自wiki）:</p>
-
-<p><img src="/images/2014-12-12-insertion-sort/1.gif"></p>
-
-<figure class='code'><figcaption><span>InsertionSort.java </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">InsertionSort</span> <span class="o">{</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">8</span><span class="o">,</span><span class="mi">9</span><span class="o">,</span><span class="mi">45</span><span class="o">,</span><span class="mi">23</span><span class="o">,</span><span class="mi">87</span><span class="o">,</span><span class="mi">34</span><span class="o">,</span><span class="mi">65</span><span class="o">};</span>
-</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">a</span><span class="o">){</span>
-</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="s">&quot; &quot;</span><span class="o">);</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
-</span><span class='line'>        <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">InsertionSort</span><span class="o">().</span><span class="na">excute</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
-</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">a</span><span class="o">){</span>
-</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="s">&quot; &quot;</span><span class="o">);</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">excute</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">){</span>
-</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
-</span><span class='line'>            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
-</span><span class='line'>            <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">;</span>
-</span><span class='line'>            <span class="k">while</span><span class="o">(</span><span class="n">j</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temp</span><span class="o">){</span>
-</span><span class='line'>                <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
-</span><span class='line'>                <span class="n">j</span><span class="o">--;</span>
-</span><span class='line'>            <span class="o">}</span>
-</span><span class='line'>            <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/12/insertion-sort/">阅读全文</a>
+    </footer>
   
 
 
@@ -252,7 +170,7 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
 
 
 
-<time class='entry-date' datetime='2014-12-12T14:39:21+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:39 pm</span></time>
+<time class='entry-date' datetime='2014-12-12T14:39:21+08:00'><span class='date'>2014 年12 月12 日</span> <span class='time'>2:39 pm</span></time>
         
            | <a href="/blog/2014/12/12/quick-sort/#disqus_thread"
              data-disqus-identifier="http://yingbing.github.io/blog/2014/12/12/quick-sort/">Comments</a>
@@ -266,100 +184,12 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
 
 <p>快速排序就是把一个数拿出来，然后把小于这个数的扔到一边，把大于它的扔到一边，那这个数就在正确的位置上了,然后把这个数的左边分成一份，右边分成一份，再把这两份进行刚才的做法，一直不停地这样做，直到不能再分。</p>
 
-<p>接下来就要说明怎么把小于它的数扔到一边，大于它的数扔到一边<br/>
-1、拿出第一个数temp，那第一个数的位置就空了出来<br/>
-2、从后向前找，找到小于temp的数，记住位置i，把小于temp的数扔到刚才空出来的位置，那 i 的位置又空了出来，<br/>
-3、从前向后找，找到大于temp的数，记住位置j，把大于temp的数扔到刚才空出来的位置，那 j 的位置又空了出来，<br/>
-4、重复2，3，直到向前找跟向后找相遇，把temp放在相遇的位置
-5、把数组从这个数的位置分成两部分，分别进行1，2，3，4，做完不能再做的时候就停了，^ _ ^</p>
-
-<p>老规矩，附上wiki的地址： <a href="http://en.wikipedia.org/wiki/Quicksort">http://en.wikipedia.org/wiki/Quicksort</a>
-再附上两张排序的图片（来自wiki）：</p>
-
-<p><img src="/images/2014-12-12-quick-sort/1.png"><br/>
-<img src="/images/2014-12-12-quick-sort/2.png"></p>
-
-<figure class='code'><figcaption><span>Quicksort.java </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-<span class='line-number'>28</span>
-<span class='line-number'>29</span>
-<span class='line-number'>30</span>
-<span class='line-number'>31</span>
-<span class='line-number'>32</span>
-<span class='line-number'>33</span>
-<span class='line-number'>34</span>
-<span class='line-number'>35</span>
-<span class='line-number'>36</span>
-<span class='line-number'>37</span>
-<span class='line-number'>38</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Quicksort</span> <span class="o">{</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="o">{</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">2</span><span class="o">,</span> <span class="mi">6</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">8</span><span class="o">,</span> <span class="mi">9</span><span class="o">,</span> <span class="mi">45</span><span class="o">,</span> <span class="mi">23</span><span class="o">,</span> <span class="mi">87</span><span class="o">,</span> <span class="mi">34</span><span class="o">,</span> <span class="mi">65</span> <span class="o">};</span>
-</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">:</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="s">&quot; &quot;</span><span class="o">);</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
-</span><span class='line'>        <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">Quicksort</span><span class="o">().</span><span class="na">excute</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
-</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">:</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span> <span class="o">+</span> <span class="s">&quot; &quot;</span><span class="o">);</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">excute</span><span class="o">(</span><span class="kt">int</span> <span class="n">a</span><span class="o">[],</span> <span class="kt">int</span> <span class="n">left</span><span class="o">,</span> <span class="kt">int</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="k">if</span> <span class="o">(</span><span class="n">left</span> <span class="o">&lt;</span> <span class="n">right</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">left</span><span class="o">],</span> <span class="n">l</span> <span class="o">=</span> <span class="n">left</span><span class="o">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">right</span><span class="o">;</span>
-</span><span class='line'>            <span class="k">while</span> <span class="o">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                <span class="k">while</span> <span class="o">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="o">[</span><span class="n">r</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">temp</span><span class="o">)</span>
-</span><span class='line'>                    <span class="n">r</span><span class="o">--;</span>
-</span><span class='line'>                <span class="k">if</span> <span class="o">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                    <span class="n">a</span><span class="o">[</span><span class="n">l</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">r</span><span class="o">];</span>
-</span><span class='line'>                    <span class="n">l</span><span class="o">++;</span>
-</span><span class='line'>                <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>                <span class="k">while</span> <span class="o">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span> <span class="o">&amp;&amp;</span> <span class="n">a</span><span class="o">[</span><span class="n">l</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">temp</span><span class="o">)</span>
-</span><span class='line'>                    <span class="n">l</span><span class="o">++;</span>
-</span><span class='line'>                <span class="k">if</span> <span class="o">(</span><span class="n">l</span> <span class="o">&lt;</span> <span class="n">r</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>                    <span class="n">a</span><span class="o">[</span><span class="n">r</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">l</span><span class="o">];</span>
-</span><span class='line'>                    <span class="n">r</span><span class="o">--;</span>
-</span><span class='line'>                <span class="o">}</span>
-</span><span class='line'>            <span class="o">}</span>
-</span><span class='line'>            <span class="n">a</span><span class="o">[</span><span class="n">l</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
-</span><span class='line'>            <span class="n">excute</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">left</span><span class="o">,</span> <span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="o">);</span>
-</span><span class='line'>            <span class="n">excute</span><span class="o">(</span><span class="n">a</span><span class="o">,</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="o">,</span> <span class="n">right</span><span class="o">);</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/12/quick-sort/">阅读全文</a>
+    </footer>
   
 
 
@@ -379,7 +209,7 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
 
 
 
-<time class='entry-date' datetime='2014-12-12T14:17:13+08:00'><span class='date'><span class='date-month'>Dec</span> <span class='date-day'>12</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>2:17 pm</span></time>
+<time class='entry-date' datetime='2014-12-12T14:17:13+08:00'><span class='date'>2014 年12 月12 日</span> <span class='time'>2:17 pm</span></time>
         
            | <a href="/blog/2014/12/12/bubble-sort/#disqus_thread"
              data-disqus-identifier="http://yingbing.github.io/blog/2014/12/12/bubble-sort/">Comments</a>
@@ -394,79 +224,52 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
 <p>主要是把几个算法的搬过来
 其它的就不搬了，第一搬的成本太高，第二搬了也没有什么用，所以其它的就放着了.</p>
 
-<p>&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-我是分隔线&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</p>
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/12/bubble-sort/">阅读全文</a>
+    </footer>
+  
 
-<p>以前太浮躁了，都不知道要低调，所有写的代码都是为了装13，现在发现自己的基础实太差了，开始重头开始学习大学的课程。<br/>
-有人说，你工作的时候上司会叫你定排序算法吗？也许是不会，但是如果基咄都不好的话，是没有办法往深层次地去发展的。<br/>
-我不知道谁说的代码是一碗青春饭，谁是这个谣言的始作俑者我也不想知道，但是这个谣言的结果就是所有的程序员都想要去转管理，没有办法把心思放在提高代码的质量上。<br/>
-我也很想搞acm，因为acm不仅可以锻炼思维，也可以培养抽象的能力。不过这一切都不算太晚，现在开始咯。<br/>
-你认为最迟的时候恰恰是最早的时候！</p>
 
-<p>冒泡排序的算法简单我就不想说了，这是wiki的简介：<a href="http://en.wikipedia.org/wiki/Bubble_sort">http://en.wikipedia.org/wiki/Bubble_sort</a>
-另外附上两幅图片（来自wiki）:</p>
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2014/12/12/algorithmns-overview/">算法概述</a></h1>
+    
+    
+      <p class="meta">
+        
 
-<p><img src="/images/2014-12-12-bubble-sort/1.gif"><br/>
-<img src="/images/2014-12-12-bubble-sort/2.gif"></p>
 
-<figure class='code'><figcaption><span>BubbleSort.java </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-<span class='line-number'>19</span>
-<span class='line-number'>20</span>
-<span class='line-number'>21</span>
-<span class='line-number'>22</span>
-<span class='line-number'>23</span>
-<span class='line-number'>24</span>
-<span class='line-number'>25</span>
-<span class='line-number'>26</span>
-<span class='line-number'>27</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BubbleSort</span> <span class="o">{</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="o">{</span><span class="mi">3</span><span class="o">,</span><span class="mi">5</span><span class="o">,</span><span class="mi">2</span><span class="o">,</span><span class="mi">6</span><span class="o">,</span><span class="mi">1</span><span class="o">,</span><span class="mi">8</span><span class="o">,</span><span class="mi">9</span><span class="o">,</span><span class="mi">45</span><span class="o">,</span><span class="mi">23</span><span class="o">,</span><span class="mi">87</span><span class="o">,</span><span class="mi">34</span><span class="o">,</span><span class="mi">65</span><span class="o">};</span>
-</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">a</span><span class="o">){</span>
-</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="s">&quot; &quot;</span><span class="o">);</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">();</span>
-</span><span class='line'>        <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BubbleSort</span><span class="o">().</span><span class="na">excute</span><span class="o">(</span><span class="n">a</span><span class="o">);</span>
-</span><span class='line'>        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="nl">i:</span><span class="n">a</span><span class="o">){</span>
-</span><span class='line'>            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">i</span><span class="o">+</span><span class="s">&quot; &quot;</span><span class="o">);</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'>
-</span><span class='line'>    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">excute</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">a</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>
-</span><span class='line'>        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
-</span><span class='line'>            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="o">;</span> <span class="n">j</span><span class="o">++)</span> <span class="o">{</span>
-</span><span class='line'>                <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">])</span> <span class="o">{</span>
-</span><span class='line'>                    <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
-</span><span class='line'>                    <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="o">]=</span><span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">];</span>
-</span><span class='line'>                    <span class="n">a</span><span class="o">[</span><span class="n">j</span><span class="o">]=</span><span class="n">temp</span><span class="o">;</span>
-</span><span class='line'>                <span class="o">}</span>
-</span><span class='line'>            <span class="o">}</span>
-</span><span class='line'>        <span class="o">}</span>
-</span><span class='line'>        <span class="k">return</span> <span class="n">a</span><span class="o">;</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
+
+
+<time class='entry-date' datetime='2014-12-12T11:32:47+08:00'><span class='date'>2014 年12 月12 日</span> <span class='time'>11:32 am</span></time>
+        
+           | <a href="/blog/2014/12/12/algorithmns-overview/#disqus_thread"
+             data-disqus-identifier="http://yingbing.github.io/blog/2014/12/12/algorithmns-overview/">Comments</a>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>算法是一门特别有趣有学科，我并不想去深究它的概念，就贴一下wiki吧：<br/>
+<a href="http://en.wikipedia.org/wiki/Algorithm">http://en.wikipedia.org/wiki/Algorithm</a></p>
+
+<p>写这篇文章就为了记录一下我已经了解的算法分类，也算是一个目录吧</p>
 
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/12/12/algorithmns-overview/">阅读全文</a>
+    </footer>
   
 
 
@@ -486,7 +289,7 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
 
 
 
-<time class='entry-date' datetime='2014-11-28T16:49:23+08:00'><span class='date'><span class='date-month'>Nov</span> <span class='date-day'>28</span><span class='date-suffix'>th</span>, <span class='date-year'>2014</span></span> <span class='time'>4:49 pm</span></time>
+<time class='entry-date' datetime='2014-11-28T16:49:23+08:00'><span class='date'>2014 年11 月28 日</span> <span class='time'>4:49 pm</span></time>
         
            | <a href="/blog/2014/11/28/test-blog/#disqus_thread"
              data-disqus-identifier="http://yingbing.github.io/blog/2014/11/28/test-blog/">Comments</a>
@@ -502,76 +305,12 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
 很不错的样子哦<br/>
 感觉可以用</p>
 
-<h2>二、测试代码</h2>
-
-<p>1、带文件名的代码</p>
-
-<figure class='code'><figcaption><span>Javascript Array Syntax </span></figcaption>
-<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kd">var</span> <span class="nx">arr1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">arrayLength</span><span class="p">);</span>
-</span><span class='line'><span class="kd">var</span> <span class="nx">arr2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">(</span><span class="nx">element0</span><span class="p">,</span> <span class="nx">element1</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">elementN</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>2、不带文件名的代码</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='java'><span class='line'><span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
-</span><span class='line'>    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
-</span><span class='line'>        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="s">&quot;Hello World!!!&quot;</span><span class="o">);</span>
-</span><span class='line'>    <span class="o">}</span>
-</span><span class='line'><span class="o">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>3、不带行号和高亮的代码</p>
-
-<pre><code>System.out.print("Hello World!!!");
-</code></pre>
-
-<p>4、普通代码块：<code>Octopress</code></p>
-
-<h2>三、测试图片</h2>
-
-<p>1、纯图片<br/>
-<img src="/images/2014-11-28-test-blog/1.JPG" width="200"></p>
-
-<p>2、带<code>title</code><br/>
-<img src="/images/2014-11-28-test-blog/2.JPG" width="200" title="杀生丸" ></p>
-
-<p>3、自定义宽度<br/>
-<img src="/images/2014-11-28-test-blog/3.JPG" width="200"></p>
-
-<p>没有设置宽度实难看，都设置了宽度= =|</p>
-
-<!--
-4、自定义`alt`和`title`  
-![Alt文本](/images/2014-11-28-test-blog/3.JPG "title文本")
- -->
-
-
-<h2>四、测试链接</h2>
-
-<p><a href="http://yingbing.github.io/">http://yingbing.github.io/</a></p>
-
-<p><a href="http://yingbing.github.io">ICE</a></p>
-
-<h2>五、总结</h2>
-
-<p>这也算是基本的markdown语法熟悉^ _ ^</p>
-
-<p>多说弄不好，评论系统还是用disqus。</p>
-
-<p>踏实地学习吧，博客只是用来记录学习的过程。</p>
-
-<p>庸人常立志：从现在开始要卯足火力学习了！！！</p>
 </div>
   
+  
+    <footer>
+      <a rel="full-article" href="/blog/2014/11/28/test-blog/">阅读全文</a>
+    </footer>
   
 
 
@@ -586,11 +325,11 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
 <aside class="sidebar">
   
     <section>
-  <h1>最近发布</h1>
+  <h1>最新发布</h1>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2014/12/12/algorithmns-overview/">算法概述</a>
+        <a href="/blog/2014/12/27/regular-expression/">正则表达式</a>
       </li>
     
       <li class="post">
@@ -606,12 +345,19 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
       </li>
     
       <li class="post">
-        <a href="/blog/2014/11/28/test-blog/">第一篇博客</a>
+        <a href="/blog/2014/12/12/algorithmns-overview/">算法概述</a>
       </li>
     
   </ul>
 </section>
+<section>
+  <h1>分类目录</h1>
+  <ul id="categories">
+    <li class='category'><a href='/blog/categories/qi-ta/'>其它 (1)</a></li>
+<li class='category'><a href='/blog/categories/suan-fa/'>算法 (4)</a></li>
 
+  </ul>
+</section>
 
 
 
@@ -622,7 +368,7 @@ http://en.wikipedia.org/wiki/Algorithm 写这篇文章就为了记录一下我�
     </div>
   </div>
   <footer role="contentinfo"><p>
-  Copyright &copy; 2014 - ICE -
+  Copyright &copy; 2015 - ICE -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
