@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 其它 | 薛映冰的代码狂躁症]]></title>
   <link href="http://yingbing.github.io/blog/categories/qi-ta/atom.xml" rel="self"/>
   <link href="http://yingbing.github.io/"/>
-  <updated>2015-01-20T12:00:00+08:00</updated>
+  <updated>2015-02-01T01:50:07+08:00</updated>
   <id>http://yingbing.github.io/</id>
   <author>
     <name><![CDATA[ICE]]></name>
@@ -12,6 +12,137 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[正则表达式]]></title>
+    <link href="http://yingbing.github.io/blog/2014/12/27/regular-expression/"/>
+    <updated>2014-12-27T10:45:09+08:00</updated>
+    <id>http://yingbing.github.io/blog/2014/12/27/regular-expression</id>
+    <content type="html"><![CDATA[<h3>一、正则表达式概述</h3>
+
+<p>学习一个东西，就要知道它的三个方面：<br/>
+1、这是什么东西<br/>
+2、它可以用来干什么<br/>
+3、怎么用它</p>
+
+<p>正则表达式是用来描述、匹配符合某个句法规则的字符串，可以用来检查字符串格式、搜索、替换一些符合某些规则的文本。</p>
+
+<!--more-->
+
+
+<h3>二、正则表达式怎么用</h3>
+
+<p>正则表达式一般是用以下几种表字符来</p>
+
+<h4>1、特殊字符</h4>
+
+<p>正则表达式中一共有12个特殊字符，分别为：<code>[</code> <code>]</code> <code>\</code> <code>^</code> <code>$</code> <code>.</code> <code>|</code> <code>?</code> <code>*</code> <code>+</code> <code>(</code> <code>)</code><br/>
+这些字符如果需要用作文本符的话，则需要使用转义字符，这些字符的含义：</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">字符 </th>
+<th style="text-align:left;"> 说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">[ </td>
+<td style="text-align:left;">字符集合开始</td>
+</tr>
+<tr>
+<td style="text-align:center;">] </td>
+<td style="text-align:left;">字符集合结束</td>
+</tr>
+<tr>
+<td style="text-align:center;">( </td>
+<td style="text-align:left;">分组左括号</td>
+</tr>
+<tr>
+<td style="text-align:center;">) </td>
+<td style="text-align:left;">分组右括号</td>
+</tr>
+<tr>
+<td style="text-align:center;">\ </td>
+<td style="text-align:left;">转义</td>
+</tr>
+<tr>
+<td style="text-align:center;">^ </td>
+<td style="text-align:left;">匹配字符串的开始（取反）</td>
+</tr>
+<tr>
+<td style="text-align:center;">$ </td>
+<td style="text-align:left;">匹配字符串的结束</td>
+</tr>
+<tr>
+<td style="text-align:center;">. </td>
+<td style="text-align:left;">匹配除换行符以外的任意字符</td>
+</tr>
+<tr>
+<td style="text-align:center;"></td>
+<td style="text-align:left;"> </td>
+</tr>
+<tr>
+<td style="text-align:center;">? </td>
+<td style="text-align:left;">重复零次或一次</td>
+</tr>
+<tr>
+<td style="text-align:center;">* </td>
+<td style="text-align:left;">重复零次或更多次</td>
+</tr>
+<tr>
+<td style="text-align:center;">+ </td>
+<td style="text-align:left;">重复一次或更多次</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>这些字符分别代表什么意思，后面会一个一个地讲。</p>
+
+<h4>2、元字符</h4>
+
+<h4>3、转义字符</h4>
+
+<h4>4、</h4>
+
+<p>写到一半，有空再补上吧，实在不好意思，因为强迫症就先推上来咯。</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">左对齐表头 </th>
+<th style="text-align:center;"> 中间对齐表头 </th>
+<th style="text-align:right;"> 右对齐表头</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">左对齐数据 </td>
+<td style="text-align:center;">中间对齐数据  </td>
+<td style="text-align:right;">右对齐数据</td>
+</tr>
+<tr>
+<td style="text-align:left;">第二行数据 </td>
+<td style="text-align:center;">也是第二行    </td>
+<td style="text-align:right;">还是第二行</td>
+</tr>
+<tr>
+<td style="text-align:left;">懒得写了&hellip;</td>
+<td style="text-align:center;">&hellip;..         </td>
+<td style="text-align:right;">&hellip;..</td>
+</tr>
+<tr>
+<td style="text-align:left;">长数据，以便看出表头的对齐</td>
+<td style="text-align:center;">长数据，以便看出表头的对齐</td>
+<td style="text-align:right;">长数据，以便看出表头的对齐</td>
+</tr>
+</tbody>
+</table>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[第一篇博客]]></title>
