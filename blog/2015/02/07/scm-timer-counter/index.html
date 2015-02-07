@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Category: C语言 - 薛映冰的代码狂躁症</title>
+  <title>定时器/计数器 - 薛映冰的代码狂躁症</title>
   <meta name="author" content="ICE">
 
   
-  <meta name="description" content="Category: c语言">
+  <meta name="description" content="一、什么是定时器/计数器 在51单片机中，定时器/计数器是用来实现定时功能，并且具有计数的功能，来实现对外部信号的计数。 二、定时器/计数器有什么类型 在51单片机中，分为软件定时器，不可编程硬件定时器，可编程定时器
+软件定时：CPU每执行一条指令时，是需要固定时间的，所以， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://yingbing.github.io/blog/categories/cyu-yan">
+  <link rel="canonical" href="http://yingbing.github.io/blog/2015/02/07/scm-timer-counter">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
@@ -65,36 +66,87 @@
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Category: C语言</h1>
+    
+      <h1 class="entry-title">定时器/计数器</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-02-07T17:20:57+08:00'><span class='date'>2015 年2 月7 日</span> <span class='time'>5:20 pm</span></time>
+        
+           | <a href="#disqus_thread"
+             data-disqus-identifier="http://yingbing.github.io">Comments</a>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives" class="category">
 
 
+<div class="entry-content"><h3>一、什么是定时器/计数器</h3>
 
-  
-  <h2>2015</h2>
+<p>在51单片机中，定时器/计数器是用来实现定时功能，并且具有计数的功能，来实现对外部信号的计数。</p>
 
-<article>
-  
-<h1><a href="/blog/2015/01/31/dynamic-array/">C语言 动态数组实现</a></h1>
-<time datetime="2015-01-31T20:17:49+08:00" pubdate><span class='month'>Jan</span> <span class='day'>31</span> <span class='year'>2015</span></time>
+<h3>二、定时器/计数器有什么类型</h3>
 
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/cyu-yan/'>c语言</a></span>
-</footer>
-
-
-</article>
-
+<p>在51单片机中，分为软件定时器，不可编程硬件定时器，可编程定时器
+软件定时：CPU每执行一条指令时，是需要固定时间的，所以，通过执行空指令可以达到延时的效果，这样子做的代价是占用CPU时间，所以一般很少这么做。
+不可编程硬件定时器：是由电路和硬件来完成定时功能的，一般采用基电路，外接定时部件（电阻和电容），通过改变电阻的阻值和电容的电容值来修改定时值，一量确定后件不能通过软件修改，这样子做的优点是不需要占用CPU时间。
+可编程定时器：通软件来确定定时值及其范围，可编程定时器功能强大，灵活性高。</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">ICE</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-02-07T17:20:57+08:00'><span class='date'>2015 年2 月7 日</span> <span class='time'>5:20 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/dan-pian-ji/'>单片机</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/01/31/dynamic-array/" title="Previous Post: C语言 动态数组实现">&laquo; C语言 动态数组实现</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -144,6 +196,7 @@
 </aside>
 
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -158,7 +211,10 @@
       var disqus_shortname = 'xueyingbing';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://yingbing.github.io/blog/2015/02/07/scm-timer-counter/';
+        var disqus_url = 'http://yingbing.github.io/blog/2015/02/07/scm-timer-counter/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

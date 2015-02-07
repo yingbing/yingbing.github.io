@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: 单片机 | 薛映冰的代码狂躁症]]></title>
+  <link href="http://yingbing.github.io/blog/categories/dan-pian-ji/atom.xml" rel="self"/>
+  <link href="http://yingbing.github.io/"/>
+  <updated>2015-02-07T19:07:21+08:00</updated>
+  <id>http://yingbing.github.io/</id>
+  <author>
+    <name><![CDATA[ICE]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[定时器/计数器]]></title>
+    <link href="http://yingbing.github.io/blog/2015/02/07/scm-timer-counter/"/>
+    <updated>2015-02-07T17:20:57+08:00</updated>
+    <id>http://yingbing.github.io/blog/2015/02/07/scm-timer-counter</id>
+    <content type="html"><![CDATA[<h3>一、什么是定时器/计数器</h3>
+
+<p>在51单片机中，定时器/计数器是用来实现定时功能，并且具有计数的功能，来实现对外部信号的计数。</p>
+
+<h3>二、定时器/计数器有什么类型</h3>
+
+<p>在51单片机中，分为软件定时器，不可编程硬件定时器，可编程定时器
+软件定时：CPU每执行一条指令时，是需要固定时间的，所以，通过执行空指令可以达到延时的效果，这样子做的代价是占用CPU时间，所以一般很少这么做。
+不可编程硬件定时器：是由电路和硬件来完成定时功能的，一般采用基电路，外接定时部件（电阻和电容），通过改变电阻的阻值和电容的电容值来修改定时值，一量确定后件不能通过软件修改，这样子做的优点是不需要占用CPU时间。
+可编程定时器：通软件来确定定时值及其范围，可编程定时器功能强大，灵活性高。</p>
+]]></content>
+  </entry>
+  
+</feed>
