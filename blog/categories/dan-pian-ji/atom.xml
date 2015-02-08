@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 单片机 | 薛映冰的代码狂躁症]]></title>
   <link href="http://yingbing.github.io/blog/categories/dan-pian-ji/atom.xml" rel="self"/>
   <link href="http://yingbing.github.io/"/>
-  <updated>2015-02-08T11:02:45+08:00</updated>
+  <updated>2015-02-08T11:20:31+08:00</updated>
   <id>http://yingbing.github.io/</id>
   <author>
     <name><![CDATA[ICE]]></name>
@@ -49,6 +49,16 @@
 
 <p>内部结构如下图： <br/>
 <img src="/images/2015-02-07-scm-timer-counter/1.jpg" width="500"></p>
+
+<h3>四、定时器工作方式</h3>
+
+<h4>1、工作方式0</h4>
+
+<h4>2、工作方式1</h4>
+
+<h4>3、工作方式2</h4>
+
+<h4>4、工作方式3</h4>
 ]]></content>
   </entry>
   
