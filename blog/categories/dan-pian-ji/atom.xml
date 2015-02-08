@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 单片机 | 薛映冰的代码狂躁症]]></title>
   <link href="http://yingbing.github.io/blog/categories/dan-pian-ji/atom.xml" rel="self"/>
   <link href="http://yingbing.github.io/"/>
-  <updated>2015-02-07T19:17:52+08:00</updated>
+  <updated>2015-02-08T10:18:56+08:00</updated>
   <id>http://yingbing.github.io/</id>
   <author>
     <name><![CDATA[ICE]]></name>
@@ -32,7 +32,23 @@
 
 <p><strong>不可编程硬件定时器</strong>：是由电路和硬件来完成定时功能的，一般采用基电路，外接定时部件（电阻和电容），通过改变电阻的阻值和电容的电容值来修改定时值，一量确定后件不能通过软件修改，这样子做的优点是不需要占用CPU时间。</p>
 
-<p><strong>可编程定时器</strong>：通软件来确定定时值及其范围，可编程定时器功能强大，灵活性高。</p>
+<p><strong>可编程定时器</strong>：通软件来确定定时值及其范围，可编程定时器功能强大，灵活性高。这是本文详细讲解的定时器。</p>
+
+<h3>三、定时器的内部结构及工作原理</h3>
+
+<p>8051单片机有定时器0（T0)和定时器1（T1）两个定时器。 <br/>
+<strong>定时器0（T0)和定时器1（T1）</strong>是两个16位加法计算器。 <br/>
+定时器0是由TH0和TH1两个8位计数器组成的，定时器1也是一样。</p>
+
+<p>定时器内部还有以下寄存器：<br/>
+8位的方式寄存器（TMOD) <br/>
+8位控制寄存器（TCON) <br/>
+选择定时器模式寄存器(C/T) <br/>
+启动方式寄存器（GATE）<br/>
+工作方式及发出启动信号寄存器（T0或T1）</p>
+
+<p>内部结构如下图： <br/>
+<img src="/images/2015-02-07-scm-timer-counter/1.JPG" width="500"></p>
 ]]></content>
   </entry>
   
