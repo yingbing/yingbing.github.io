@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 单片机 | 薛映冰的代码狂躁症]]></title>
   <link href="http://yingbing.github.io/blog/categories/dan-pian-ji/atom.xml" rel="self"/>
   <link href="http://yingbing.github.io/"/>
-  <updated>2015-02-08T11:20:31+08:00</updated>
+  <updated>2015-02-09T17:27:03+08:00</updated>
   <id>http://yingbing.github.io/</id>
   <author>
     <name><![CDATA[ICE]]></name>
@@ -52,13 +52,112 @@
 
 <h3>四、定时器工作方式</h3>
 
-<h4>1、工作方式0</h4>
+<p>定时器的工作方式主要是通过THOD低4位是定时器0的工作方式控制位，高4位为定时器1的工作方式控制方式。均为M1M0</p>
 
-<h4>2、工作方式1</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">工作方式 </th>
+<th style="text-align:center;"> M1 </th>
+<th style="text-align:center;"> M0  </th>
+<th style="text-align:left;"> 功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">0 </td>
+<td style="text-align:center;"> 0 </td>
+<td style="text-align:center;"> 0  </td>
+<td style="text-align:left;"> 13位计数器</td>
+</tr>
+<tr>
+<td style="text-align:center;">1 </td>
+<td style="text-align:center;"> 0 </td>
+<td style="text-align:center;"> 1  </td>
+<td style="text-align:left;"> 16位计数器</td>
+</tr>
+<tr>
+<td style="text-align:center;">2 </td>
+<td style="text-align:center;"> 1 </td>
+<td style="text-align:center;"> 0  </td>
+<td style="text-align:left;"> 8位计数器，初值自动装入</td>
+</tr>
+<tr>
+<td style="text-align:center;">3 </td>
+<td style="text-align:center;"> 1 </td>
+<td style="text-align:center;"> 1  </td>
+<td style="text-align:left;"> T0分成两个8位计数器，T1停止工作</td>
+</tr>
+</tbody>
+</table>
 
-<h4>3、工作方式2</h4>
 
-<h4>4、工作方式3</h4>
+<h3>五、使用定时器</h3>
+
+<p><figure class='code'><figcaption><span>timer_count.c </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+</pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span><span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">reg52</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">i</span><span class="p">;</span>
+</span><span class='line'><span class="n">sbit</span> <span class="n">LED0</span> <span class="o">=</span> <span class="n">P1</span><span class="o">&lt;</span><span class="n">sup</span><span class="o">&gt;</span><span class="mi">0</span><span class="o">&lt;/</span><span class="n">sup</span><span class="o">&gt;</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">void</span> <span class="n">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">TMOD</span> <span class="o">=</span> <span class="mh">0x01</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">TH0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">TL0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">ET0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">TR0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">EA</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
+</span><span class='line'>
+</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">void</span> <span class="n">t0_delay</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">interrupt</span> <span class="mi">1</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="n">i</span><span class="o">++</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">TR0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">TH0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="n">TL0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">20</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>        <span class="n">LED0</span> <span class="o">=</span> <span class="o">~</span><span class="n">LED0</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="n">TR0</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure></p>
 ]]></content>
   </entry>
   
