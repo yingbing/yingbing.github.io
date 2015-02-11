@@ -4,7 +4,7 @@
   <title><![CDATA[Category: 数据结构与算法 | 薛映冰的代码狂躁症]]></title>
   <link href="http://yingbing.github.io/blog/categories/shu-ju-jie-gou-yu-suan-fa/atom.xml" rel="self"/>
   <link href="http://yingbing.github.io/"/>
-  <updated>2015-02-11T17:41:50+08:00</updated>
+  <updated>2015-02-11T17:46:26+08:00</updated>
   <id>http://yingbing.github.io/</id>
   <author>
     <name><![CDATA[ICE]]></name>
@@ -244,18 +244,6 @@
 <span class='line-number'>128</span>
 <span class='line-number'>129</span>
 <span class='line-number'>130</span>
-<span class='line-number'>131</span>
-<span class='line-number'>132</span>
-<span class='line-number'>133</span>
-<span class='line-number'>134</span>
-<span class='line-number'>135</span>
-<span class='line-number'>136</span>
-<span class='line-number'>137</span>
-<span class='line-number'>138</span>
-<span class='line-number'>139</span>
-<span class='line-number'>140</span>
-<span class='line-number'>141</span>
-<span class='line-number'>142</span>
 </pre></td><td class='code'><pre><code class='c'><span class='line'><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
 </span><span class='line'>
 </span><span class='line'><span class="o">&lt;</span><span class="n">h1</span><span class="o">&gt;</span><span class="n">include</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="n">stdio</span><span class="p">.</span><span class="n">h</span><span class="o">&gt;&lt;/</span><span class="n">h1</span><span class="o">&gt;</span>
@@ -385,19 +373,7 @@
 </span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">ElementType</span> <span class="n">Retrieve</span><span class="p">(</span><span class="n">Position</span> <span class="n">P</span><span class="p">)</span>
 </span><span class='line'><span class="p">{</span>
 </span><span class='line'>    <span class="k">return</span> <span class="n">P</span><span class="o">-&gt;</span><span class="n">Element</span><span class="p">;</span>
-</span><span class='line'><span class="p">}</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="kt">int</span> <span class="n">main</span><span class="p">()</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="n">List</span> <span class="n">list</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">list</span><span class="o">-&gt;</span><span class="n">Element</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-</span><span class='line'>    <span class="n">list</span><span class="o">-&gt;</span><span class="n">Next</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span><span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">pre</span><span class="o">&gt;&lt;</span><span class="n">code</span><span class="o">&gt;</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">list</span><span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span><span class="n">Element</span><span class="p">);</span>
-</span><span class='line'><span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-</span><span class='line'><span class="o">&lt;/</span><span class="n">code</span><span class="o">&gt;&lt;/</span><span class="n">pre</span><span class="o">&gt;</span>
-</span><span class='line'>
-</span><span class='line'><span class="o">&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="p">}</span>
+</span><span class='line'><span class="p">}</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
 <p>附上github代码地址：<a href="https://github.com/yingbing/DS-a-AA/tree/master/list">here</a></p>
