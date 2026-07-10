@@ -1,526 +1,1773 @@
-
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!doctype html>
+<html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <title>薛映冰的代码狂躁症</title>
-  <meta name="author" content="ICE">
-
-  
-  <meta name="description" content="一、什么是链表 链表（Linked list）是一种常见的基础数据结构，是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存到下一个节点的指针(Pointer)。 结构如下图： 附上wiki链接：Linked List (为什么发英文的呢，因为我看不懂) ">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数学竖式练习</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d7deea;
+      --strong-line: #202939;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --correct: #059669;
+      --wrong: #dc2626;
+      --product: #047857;
+      --remainder: #b91c1c;
+      --drop: #dbeafe;
+      --divisor: #6d28d9;
+      --cell: 45px;
+    }
 
-  
-  <link rel="canonical" href="http://yingbing.github.io">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/stylesheets/data-table.css" media="screen, projection" rel="stylesheet" type="text/css" />
-  <link href="/atom.xml" rel="alternate" title="薛映冰的代码狂躁症" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="http://ajax.useso.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-<link href="http://fonts.useso.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
-<link href="http://fonts.useso.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+    * {
+      box-sizing: border-box;
+    }
 
-  
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+      letter-spacing: 0;
+    }
 
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    input {
+      -webkit-appearance: none;
+      appearance: none;
+      min-width: 0;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .app-shell {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 28px;
+      background: #ffffff;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 220px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: #eef2ff;
+      color: var(--primary);
+      font-weight: 900;
+      font-size: 22px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .stats {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      min-height: 34px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfdff;
+    }
+
+    .stat-pill strong {
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(720px, 1fr) 320px;
+      gap: 18px;
+      width: min(1240px, calc(100vw - 36px));
+      margin: 18px auto 28px;
+    }
+
+    .main,
+    .side {
+      min-width: 0;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 14px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .segmented {
+      display: inline-flex;
+      background: #edf2f7;
+      padding: 3px;
+      border-radius: 8px;
+      gap: 3px;
+    }
+
+    .segmented button {
+      min-width: 74px;
+      height: 34px;
+      padding: 0 12px;
+      border-radius: 6px;
+      color: #475467;
+      background: transparent;
+    }
+
+    .segmented button.active {
+      background: #ffffff;
+      color: var(--primary-dark);
+      box-shadow: 0 1px 3px rgba(16, 24, 40, .14);
+      font-weight: 700;
+    }
+
+    select {
+      height: 40px;
+      min-width: 120px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--ink);
+      padding: 0 36px 0 12px;
+    }
+
+    .drill-select {
+      min-width: 168px;
+    }
+
+    .primary-button {
+      height: 40px;
+      padding: 0 16px;
+      border-radius: 8px;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .primary-button:hover {
+      background: var(--primary-dark);
+    }
+
+    .problem-card {
+      background: var(--panel);
+      border: 2px solid transparent;
+      border-radius: 8px;
+      min-height: 540px;
+      padding: 20px;
+      transition: border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .problem-card.completed {
+      border-color: var(--correct);
+      box-shadow: 0 0 0 4px rgba(5, 150, 105, .1);
+    }
+
+    .equation-line {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
+    }
+
+    .equation {
+      font-size: 25px;
+      font-weight: 800;
+      word-break: break-word;
+    }
+
+    .status-text {
+      color: var(--muted);
+      font-size: 14px;
+      text-align: right;
+      max-width: 260px;
+    }
+
+    .work-area {
+      width: max-content;
+      max-width: 100%;
+      margin: 0 auto;
+      overflow-x: auto;
+      padding: 8px 8px 18px;
+    }
+
+    .vertical-grid {
+      display: grid;
+      gap: 3px;
+      justify-content: end;
+      align-items: center;
+    }
+
+    .row {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: var(--cell);
+      align-items: center;
+      justify-content: end;
+      min-height: var(--cell);
+    }
+
+    .cell,
+    .digit-input,
+    .small-input {
+      width: var(--cell);
+      height: var(--cell);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .digit-input,
+    .small-input {
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--ink);
+      outline: 0;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .digit-input:focus,
+    .small-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, .12);
+    }
+
+    .digit-input.correct,
+    .small-input.correct {
+      border-color: var(--correct);
+      background: #ecfdf3;
+      color: var(--correct);
+    }
+
+    .digit-input.wrong,
+    .small-input.wrong {
+      border-color: var(--wrong);
+      background: #fef2f2;
+      color: var(--wrong);
+    }
+
+    .small-input {
+      width: 30px;
+      height: 28px;
+      font-size: 16px;
+      border-radius: 6px;
+      justify-self: center;
+      align-self: end;
+    }
+
+    .operator {
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    .operator-cell {
+      width: 34px;
+      color: var(--primary);
+      font-size: 30px;
+      font-weight: 900;
+      justify-self: end;
+    }
+
+    .helper-mark {
+      width: 28px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      justify-self: center;
+      align-self: end;
+      border-radius: 6px;
+      background: #eef2ff;
+      color: var(--primary-dark);
+      font-size: 16px;
+      font-weight: 900;
+    }
+
+    .line-row {
+      height: 6px;
+      border-top: 3px solid var(--strong-line);
+      margin: 2px 0 5px 34px;
+    }
+
+    .partial-line {
+      border-top: 2px solid var(--strong-line);
+      height: 6px;
+      margin: 0 0 3px 34px;
+    }
+
+    .carry-row,
+    .borrow-row {
+      min-height: 31px;
+    }
+
+    .helper-label {
+      color: var(--muted);
+      font-size: 12px;
+      align-self: center;
+      white-space: nowrap;
+    }
+
+    .history-panel,
+    .hint-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .mistake-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .hint-panel {
+      margin-bottom: 14px;
+      min-height: 292px;
+    }
+
+    .panel-title {
+      margin: 0 0 12px;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .hint-body {
+      color: #344054;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .hint-body .good {
+      color: var(--correct);
+      font-weight: 800;
+    }
+
+    .hint-body .bad {
+      color: var(--wrong);
+      font-weight: 800;
+    }
+
+    .history-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .mistake-actions {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .ghost-button {
+      height: 34px;
+      padding: 0 11px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+      color: #344054;
+      font-weight: 700;
+    }
+
+    .ghost-button:disabled {
+      cursor: not-allowed;
+      opacity: .45;
+    }
+
+    .mistake-list {
+      display: grid;
+      gap: 8px;
+      max-height: 188px;
+      overflow: auto;
+    }
+
+    .mistake-item {
+      display: grid;
+      gap: 4px;
+      padding: 9px 10px;
+      border-radius: 8px;
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #344054;
+      font-size: 13px;
+    }
+
+    .mistake-item strong {
+      color: #9a3412;
+      font-size: 14px;
+    }
+
+    .history-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      min-height: 38px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: #f8fafc;
+      color: #475467;
+      font-size: 13px;
+    }
+
+    .history-item .icon {
+      font-weight: 900;
+      font-size: 16px;
+    }
+
+    .history-item.pass .icon {
+      color: var(--correct);
+    }
+
+    .history-item.fail .icon {
+      color: var(--wrong);
+    }
+
+    .division-work {
+      --cols: 45px 20px repeat(4, 45px);
+      display: grid;
+      row-gap: 1px;
+      column-gap: 0;
+      justify-content: center;
+      overflow: visible;
+    }
+
+    .division-row {
+      display: grid;
+      grid-template-columns: var(--cols);
+      align-items: center;
+      min-height: var(--cell);
+      overflow: visible;
+    }
+
+    .division-row.hidden {
+      display: none;
+    }
+
+    .division-cell {
+      width: var(--cell);
+      height: var(--cell);
+      display: grid;
+      place-items: center;
+      font-size: 27px;
+      font-weight: 800;
+    }
+
+    .division-input {
+      width: 42px;
+      height: 40px;
+      justify-self: center;
+      align-self: center;
+      border: 2px solid #cbd5e1;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 23px;
+      font-weight: 800;
+      line-height: 1;
+      outline: 0;
+      padding: 0;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+
+    .division-input.correct {
+      border-color: var(--correct);
+      background: #ecfdf3;
+      color: var(--correct);
+    }
+
+    .division-input.wrong {
+      border-color: var(--wrong);
+      background: #fef2f2;
+      color: var(--wrong);
+    }
+
+    .divisor {
+      color: var(--divisor);
+    }
+
+    .bracket {
+      height: var(--cell);
+      border-left: 3px solid var(--strong-line);
+      border-top: 3px solid var(--strong-line);
+      align-self: stretch;
+      margin-right: -1px;
+    }
+
+    .dividend-top {
+      border-top: 3px solid var(--strong-line);
+      align-self: stretch;
+    }
+
+    .top-rule {
+      height: 9px;
+      border-top: 3px solid var(--strong-line);
+      grid-column: 3 / -1;
+    }
+
+    .product-digit {
+      color: var(--product);
+      font-weight: 900;
+    }
+
+    .remainder-digit {
+      color: var(--remainder);
+      font-weight: 900;
+    }
+
+    .drop-digit {
+      position: relative;
+      background: var(--drop);
+      border-radius: 8px;
+      color: var(--primary-dark);
+    }
+
+    .drop-source::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: calc(-1 * var(--drop-line-height, 58px));
+      height: var(--drop-line-height, 58px);
+      border-left: 1px dashed rgba(37, 99, 235, .35);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .division-row.rule-row {
+      min-height: 10px;
+    }
+
+    .division-row.rule-row .division-cell {
+      height: 10px;
+    }
+
+    .division-line {
+      height: 4px;
+      border-top: 2px solid var(--strong-line);
+      align-self: center;
+    }
+
+    .empty-state {
+      color: var(--muted);
+      font-size: 14px;
+      padding: 8px 0;
+    }
+
+    @media (max-width: 980px) {
+      .workspace {
+        grid-template-columns: 1fr;
+      }
+
+      .side {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .hint-panel {
+        margin-bottom: 0;
+      }
+
+      .division-input {
+        width: 44px;
+        font-size: 22px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      :root {
+        --cell: 40px;
+      }
+
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .workspace {
+        width: calc(100vw - 20px);
+        margin-top: 10px;
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .side {
+        grid-template-columns: 1fr;
+      }
+
+      .equation-line {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .status-text {
+        text-align: left;
+      }
+    }
+  </style>
 </head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">薛映冰的代码狂躁症</a></h1>
-  
-    <h2>人最痛苦的不是失败，而是我本可以</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="https://www.google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:yingbing.github.io" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">博客</a></li>
-  <li><a href="/blog/archives">归档</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/11/linked-list-in-c/">链表</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-11T17:08:00+08:00'><span class='date'>2015 年2 月11 日</span> <span class='time'>5:08 pm</span></time>
-        
-           | <a href="/blog/2015/02/11/linked-list-in-c/#disqus_thread"
-             data-disqus-identifier="http://yingbing.github.io/blog/2015/02/11/linked-list-in-c/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>一、什么是链表</h3>
-
-<p>链表（Linked list）是一种常见的基础数据结构，是一种线性表，但是并不会按线性的顺序存储数据，而是在每一个节点里存到下一个节点的指针(Pointer)。</p>
-
-<p>结构如下图：  <br/>
-<img src="/images/2015-02-11-linked-list-in-c/1.png" width="500"></p>
-
-<p>附上wiki链接：<a href="http://en.wikipedia.org/wiki/Linked_list">Linked List</a>  (为什么发英文的呢，因为我看不懂)</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/02/11/linked-list-in-c/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/02/07/scm-timer-counter/">定时器/计数器</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-02-07T17:20:57+08:00'><span class='date'>2015 年2 月7 日</span> <span class='time'>5:20 pm</span></time>
-        
-           | <a href="/blog/2015/02/07/scm-timer-counter/#disqus_thread"
-             data-disqus-identifier="http://yingbing.github.io/blog/2015/02/07/scm-timer-counter/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>一、什么是定时器/计数器</h3>
-
-<p>在51单片机中，定时器/计数器是用来实现定时功能，并且具有计数的功能，来实现对外部信号的计数。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/02/07/scm-timer-counter/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2015/01/31/dynamic-array/">C语言 动态数组实现</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2015-01-31T20:17:49+08:00'><span class='date'>2015 年1 月31 日</span> <span class='time'>8:17 pm</span></time>
-        
-           | <a href="/blog/2015/01/31/dynamic-array/#disqus_thread"
-             data-disqus-identifier="http://yingbing.github.io/blog/2015/01/31/dynamic-array/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>一、概述</h3>
-
-<p>C语言是不能直接定义动态数组的，数组必须在初始化时确定长度。</p>
-
-<p>如果要在程序运行时才确定数组的长度，就需要在运行的时候，自己去向系统申请一块内存用动态内存分配实现动态数组。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2015/01/31/dynamic-array/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/27/regular-expression/">正则表达式</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-27T10:45:09+08:00'><span class='date'>2014 年12 月27 日</span> <span class='time'>10:45 am</span></time>
-        
-           | <a href="/blog/2014/12/27/regular-expression/#disqus_thread"
-             data-disqus-identifier="http://yingbing.github.io/blog/2014/12/27/regular-expression/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h3>一、正则表达式概述</h3>
-
-<p>学习一个东西，就要知道它的三个方面：<br/>
-1、这是什么东西<br/>
-2、它可以用来干什么<br/>
-3、怎么用它</p>
-
-<p>正则表达式是用来描述、匹配符合某个句法规则的字符串，可以用来检查字符串格式、搜索、替换一些符合某些规则的文本。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/27/regular-expression/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/12/insertion-sort/">排序算法第三章 插入排序</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-12T14:45:36+08:00'><span class='date'>2014 年12 月12 日</span> <span class='time'>2:45 pm</span></time>
-        
-           | <a href="/blog/2014/12/12/insertion-sort/#disqus_thread"
-             data-disqus-identifier="http://yingbing.github.io/blog/2014/12/12/insertion-sort/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>从现在开始，我会尝试用我自己的话来表达一些算法，如果说得不好，请见谅。</p>
-
-<p>插入排序主要步骤分为以下几部分：<br/>
-1、从第2个元素开始把元素一个一个拿出来<br/>
-2、把拿出来的元素从后向前一个一个比较，如果被比较的数大于拿出来的元素，则被比较的数向后移一位<br/>
-3、当拿出来的元素小于等于被比较数时，把拿出来的元素存入被比较数的下一个位置</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/12/insertion-sort/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/12/quick-sort/">排序算法第二章 快速排序</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-12T14:39:21+08:00'><span class='date'>2014 年12 月12 日</span> <span class='time'>2:39 pm</span></time>
-        
-           | <a href="/blog/2014/12/12/quick-sort/#disqus_thread"
-             data-disqus-identifier="http://yingbing.github.io/blog/2014/12/12/quick-sort/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>先把快速排序的代码实现贴上来，太晚了，过程改天再加上！！！</p>
-
-<p>快速排序就是把一个数拿出来，然后把小于这个数的扔到一边，把大于它的扔到一边，那这个数就在正确的位置上了,然后把这个数的左边分成一份，右边分成一份，再把这两份进行刚才的做法，一直不停地这样做，直到不能再分。</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/12/quick-sort/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/12/bubble-sort/">排序算法 第一章 冒泡排序</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-12T14:17:13+08:00'><span class='date'>2014 年12 月12 日</span> <span class='time'>2:17 pm</span></time>
-        
-           | <a href="/blog/2014/12/12/bubble-sort/#disqus_thread"
-             data-disqus-identifier="http://yingbing.github.io/blog/2014/12/12/bubble-sort/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天把博客几篇博客从csdn搬过来</p>
-
-<p>主要是把几个算法的搬过来
-其它的就不搬了，第一搬的成本太高，第二搬了也没有什么用，所以其它的就放着了.</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/12/bubble-sort/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/12/12/algorithmns-overview/">算法概述</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-12-12T11:32:47+08:00'><span class='date'>2014 年12 月12 日</span> <span class='time'>11:32 am</span></time>
-        
-           | <a href="/blog/2014/12/12/algorithmns-overview/#disqus_thread"
-             data-disqus-identifier="http://yingbing.github.io/blog/2014/12/12/algorithmns-overview/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>算法是一门特别有趣有学科，我并不想去深究它的概念，就贴一下wiki吧：<br/>
-<a href="http://en.wikipedia.org/wiki/Algorithm">http://en.wikipedia.org/wiki/Algorithm</a></p>
-
-<p>写这篇文章就为了记录一下我已经了解的算法分类，也算是一个目录吧</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/12/12/algorithmns-overview/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2014/11/28/test-blog/">第一篇博客</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-<time class='entry-date' datetime='2014-11-28T16:49:23+08:00'><span class='date'>2014 年11 月28 日</span> <span class='time'>4:49 pm</span></time>
-        
-           | <a href="/blog/2014/11/28/test-blog/#disqus_thread"
-             data-disqus-identifier="http://yingbing.github.io/blog/2014/11/28/test-blog/">Comments</a>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>一、测试文字</h2>
-
-<p>这是我的第一篇Octopress博客<br/>
-很不错的样子哦<br/>
-感觉可以用</p>
-
-</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/blog/2014/11/28/test-blog/">阅读全文</a>
-    </footer>
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">算</div>
+        <div>
+          <h1>数学竖式练习</h1>
+        </div>
+      </div>
+      <div class="stats" aria-live="polite">
+        <span class="stat-pill">得分 <strong id="score">0</strong></span>
+        <span class="stat-pill">连续 <strong id="streak">0</strong></span>
+        <span class="stat-pill">总题 <strong id="total">0</strong></span>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <section class="main">
+        <div class="controls">
+          <div class="control-group">
+            <div class="segmented" aria-label="运算类型">
+              <button type="button" class="active" data-op="add">加法</button>
+              <button type="button" data-op="sub">减法</button>
+              <button type="button" data-op="mul">乘法</button>
+              <button type="button" data-op="div">除法</button>
+            </div>
+            <select id="difficulty" aria-label="难度">
+              <option value="easy">简单</option>
+              <option value="medium">中等</option>
+              <option value="hard">困难</option>
+            </select>
+            <select id="drillType" class="drill-select" aria-label="专项训练">
+              <option value="auto">专项：按难度</option>
+            </select>
+            <div class="segmented" aria-label="填写模式">
+              <button type="button" class="active" data-mode="step">分步填写</button>
+              <button type="button" data-mode="answer">只填答案</button>
+            </div>
+          </div>
+          <button type="button" class="primary-button" id="nextButton">下一题</button>
+        </div>
+
+        <article class="problem-card" id="problemCard">
+          <div class="equation-line">
+            <div class="equation" id="equation"></div>
+            <div class="status-text" id="statusText"></div>
+          </div>
+          <div class="work-area" id="workArea"></div>
+        </article>
+      </section>
+
+      <aside class="side">
+        <section class="hint-panel">
+          <h2 class="panel-title">提示</h2>
+          <div class="hint-body" id="hintBody"></div>
+        </section>
+        <section class="mistake-panel">
+          <h2 class="panel-title">错题本</h2>
+          <div class="mistake-actions">
+            <button type="button" class="ghost-button" id="retryMistakeButton">重练错题</button>
+            <button type="button" class="ghost-button" id="clearMistakesButton">清空</button>
+          </div>
+          <div class="mistake-list" id="mistakeList">
+            <div class="empty-state">暂无错题</div>
+          </div>
+        </section>
+        <section class="history-panel">
+          <h2 class="panel-title">练习记录</h2>
+          <div class="history-list" id="historyList">
+            <div class="empty-state">还没有记录</div>
+          </div>
+        </section>
+      </aside>
+    </main>
   </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  <h1>最新发布</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2015/02/11/linked-list-in-c/">链表</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/02/07/scm-timer-counter/">定时器/计数器</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2015/01/31/dynamic-array/">C语言 动态数组实现</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/27/regular-expression/">正则表达式</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2014/12/12/insertion-sort/">排序算法第三章 插入排序</a>
-      </li>
-    
-  </ul>
-</section>
-<section>
-  <h1>分类目录</h1>
-  <ul id="categories">
-    <li class='category'><a href='/blog/categories/cyu-yan/'>c语言 (1)</a></li>
-<li class='category'><a href='/blog/categories/qi-ta/'>其它 (2)</a></li>
-<li class='category'><a href='/blog/categories/dan-pian-ji/'>单片机 (1)</a></li>
-<li class='category'><a href='/blog/categories/shu-ju-jie-gou-yu-suan-fa/'>数据结构与算法 (1)</a></li>
-<li class='category'><a href='/blog/categories/suan-fa/'>算法 (4)</a></li>
 
-  </ul>
-</section>
+  <script>
+    const state = {
+      op: "add",
+      mode: "step",
+      difficulty: "easy",
+      drillType: "auto",
+      problem: null,
+      score: 0,
+      streak: 0,
+      total: 0,
+      history: [],
+      mistakes: [],
+      retryQueue: [],
+      completed: false
+    };
 
+    const els = {
+      score: document.getElementById("score"),
+      streak: document.getElementById("streak"),
+      total: document.getElementById("total"),
+      equation: document.getElementById("equation"),
+      statusText: document.getElementById("statusText"),
+      workArea: document.getElementById("workArea"),
+      problemCard: document.getElementById("problemCard"),
+      hintBody: document.getElementById("hintBody"),
+      historyList: document.getElementById("historyList"),
+      mistakeList: document.getElementById("mistakeList"),
+      difficulty: document.getElementById("difficulty"),
+      drillType: document.getElementById("drillType"),
+      retryMistakeButton: document.getElementById("retryMistakeButton"),
+      clearMistakesButton: document.getElementById("clearMistakesButton"),
+      nextButton: document.getElementById("nextButton")
+    };
 
+    const opNames = {
+      add: "加法",
+      sub: "减法",
+      mul: "乘法",
+      div: "除法"
+    };
 
+    const drillOptions = {
+      add: [
+        ["auto", "专项：按难度"],
+        ["carry", "只练进位"],
+        ["multiCarry", "连续进位"]
+      ],
+      sub: [
+        ["auto", "专项：按难度"],
+        ["borrow", "只练借位"],
+        ["multiBorrow", "连续借位"]
+      ],
+      mul: [
+        ["auto", "专项：按难度"],
+        ["oneDigit", "一位数乘法"],
+        ["twoDigit", "两位数乘法"],
+        ["threeByTwo", "三位数×两位数"]
+      ],
+      div: [
+        ["auto", "专项：按难度"],
+        ["exact", "整除除法"],
+        ["remainder", "有余数除法"]
+      ]
+    };
 
-  
-</aside>
+    const storageKey = "vertical-math-practice-v2";
 
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2015 - ICE -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
+    function randInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 
-</footer>
-  
+    function digitsOf(value) {
+      return String(Math.abs(value)).split("");
+    }
 
-<script type="text/javascript">
-      var disqus_shortname = 'xueyingbing';
-      
-        
-        var disqus_script = 'count.js';
-      
-    (function () {
-      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
-      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    }());
-</script>
+    function rangeForDigits(count) {
+      return [10 ** (count - 1), 10 ** count - 1];
+    }
 
+    function difficultyDigits() {
+      if (state.difficulty === "easy") return 2;
+      if (state.difficulty === "medium") return 3;
+      return 4;
+    }
 
+    function countCarryColumns(a, b) {
+      const width = Math.max(String(a).length, String(b).length);
+      const aRev = padLeftChars(a, width).reverse();
+      const bRev = padLeftChars(b, width).reverse();
+      let carry = 0;
+      let count = 0;
+      for (let i = 0; i < width; i++) {
+        const sum = Number(aRev[i] || 0) + Number(bRev[i] || 0) + carry;
+        carry = sum >= 10 ? 1 : 0;
+        if (carry) count++;
+      }
+      return count;
+    }
 
+    function countBorrowColumns(a, b) {
+      const width = Math.max(String(a).length, String(b).length);
+      const aRev = padLeftChars(a, width).map(char => Number(char || 0)).reverse();
+      const bRev = padLeftChars(b, width).map(char => Number(char || 0)).reverse();
+      let count = 0;
+      for (let i = 0; i < width; i++) {
+        if (aRev[i] < bRev[i]) {
+          count++;
+          aRev[i] += 10;
+          aRev[i + 1] -= 1;
+        }
+      }
+      return count;
+    }
 
+    function generateAddition() {
+      const digits = difficultyDigits();
+      const [min, max] = rangeForDigits(digits);
+      let a = randInt(min, max);
+      let b = randInt(min, max);
+      let guard = 0;
+      while (
+        (state.drillType === "multiCarry" ? countCarryColumns(a, b) < 2 : (a % 10) + (b % 10) < 10)
+        && guard < 500
+      ) {
+        a = randInt(min, max);
+        b = randInt(min, max);
+        guard++;
+      }
+      return { op: "add", a, b, answer: a + b };
+    }
 
+    function hasBorrow(a, b) {
+      const aDigits = digitsOf(a).reverse();
+      const bDigits = digitsOf(b).reverse();
+      for (let i = 0; i < bDigits.length; i++) {
+        if (Number(aDigits[i] || 0) < Number(bDigits[i])) return true;
+      }
+      return false;
+    }
 
+    function generateSubtraction() {
+      const digits = difficultyDigits();
+      const [min, max] = rangeForDigits(digits);
+      let a = randInt(min, max);
+      let b = randInt(min, max);
+      if (b > a) [a, b] = [b, a];
+      let guard = 0;
+      while (
+        (state.drillType === "multiBorrow" ? countBorrowColumns(a, b) < 2 : !hasBorrow(a, b))
+        && guard < 700
+      ) {
+        a = randInt(min, max);
+        b = randInt(min, max);
+        if (b > a) [a, b] = [b, a];
+        guard++;
+      }
+      return { op: "sub", a, b, answer: a - b };
+    }
 
+    function generateMultiplication() {
+      const hard = state.difficulty === "hard";
+      const medium = state.difficulty === "medium";
+      const multiplicandDigits = state.drillType === "threeByTwo" ? 3 : hard ? 3 : 2;
+      const multiplierDigits = state.drillType === "oneDigit" ? 1 : state.drillType === "twoDigit" || state.drillType === "threeByTwo" ? 2 : hard || medium ? 2 : 1;
+      const [aMin, aMax] = rangeForDigits(multiplicandDigits);
+      const [bMin, bMax] = rangeForDigits(multiplierDigits);
+      const a = randInt(aMin, aMax);
+      const b = randInt(bMin, bMax);
+      const partials = digitsOf(b).reverse().map((digit, index) => ({
+        digit: Number(digit),
+        shift: index,
+        value: a * Number(digit),
+        displayValue: a * Number(digit) * (10 ** index)
+      }));
+      return { op: "mul", a, b, answer: a * b, partials };
+    }
 
+    function generateDivision() {
+      const divisor = randInt(2, 9);
+      let dividend;
+      if (state.drillType === "exact" || (state.drillType === "auto" && state.difficulty === "easy")) {
+        const quotient = randInt(2, 11);
+        dividend = quotient * divisor;
+      } else if (state.drillType === "auto" && state.difficulty === "medium") {
+        const quotient = randInt(12, 110);
+        dividend = quotient * divisor;
+      } else {
+        dividend = randInt(1000, 9999);
+        if (state.drillType === "remainder") {
+          let guard = 0;
+          while (dividend % divisor === 0 && guard < 200) {
+            dividend = randInt(1000, 9999);
+            guard++;
+          }
+        }
+      }
+      const quotient = Math.floor(dividend / divisor);
+      const remainder = dividend % divisor;
+      return {
+        op: "div",
+        dividend,
+        divisor,
+        quotient,
+        remainder,
+        answer: quotient,
+        steps: computeDivisionSteps(dividend, divisor)
+      };
+    }
 
+    function computeDivisionSteps(dividend, divisor) {
+      const quotient = Math.floor(dividend / divisor);
+      const quotientStr = String(quotient);
+      const dividendStr = String(dividend);
+      const steps = [];
+      let currentPos = 0;
 
+      for (let i = 0; i < quotientStr.length; i++) {
+        let currentValue;
+        let chunkStart;
+        let chunkEnd;
 
+        if (i === 0) {
+          chunkStart = 0;
+          currentValue = Number(dividendStr[0]);
+          currentPos = 1;
+          while (currentValue < divisor && currentPos < dividendStr.length) {
+            currentValue = currentValue * 10 + Number(dividendStr[currentPos]);
+            currentPos++;
+          }
+          chunkEnd = currentPos - 1;
+        } else {
+          chunkStart = currentPos - 1;
+          currentValue = steps[i - 1].remainder * 10 + Number(dividendStr[currentPos]);
+          chunkEnd = currentPos;
+          currentPos++;
+        }
+
+        const quotientDigit = Number(quotientStr[i]);
+        const product = quotientDigit * divisor;
+        const remainder = currentValue - product;
+        const nextDropPos = chunkEnd + 1 < dividendStr.length ? chunkEnd + 1 : null;
+        steps.push({ quotientDigit, currentValue, product, remainder, chunkStart, chunkEnd, nextDropPos });
+      }
+
+      return steps;
+    }
+
+    function generateProblem() {
+      if (state.op === "add") return generateAddition();
+      if (state.op === "sub") return generateSubtraction();
+      if (state.op === "mul") return generateMultiplication();
+      return generateDivision();
+    }
+
+    function renderProblem(forcedProblem = null) {
+      state.completed = false;
+      els.problemCard.classList.remove("completed");
+      state.problem = forcedProblem || generateProblem();
+      els.workArea.innerHTML = "";
+      els.statusText.textContent = `${opNames[state.op]} · ${state.mode === "step" ? "分步填写" : "只填答案"}`;
+
+      if (state.op === "add") renderAddition();
+      if (state.op === "sub") renderSubtraction();
+      if (state.op === "mul") renderMultiplication();
+      if (state.op === "div") renderDivision();
+
+      bindInputs();
+      updateEquationDisplay();
+      updateStats();
+      saveProgress();
+      focusFirstInput();
+    }
+
+    function makeInput(expected, role, index, cls = "digit-input") {
+      const input = document.createElement("input");
+      input.className = cls;
+      input.inputMode = "numeric";
+      input.maxLength = 1;
+      input.dataset.expected = expected;
+      input.dataset.role = role;
+      input.dataset.index = index;
+      input.autocomplete = "off";
+      return input;
+    }
+
+    function makeCell(text = "", className = "cell") {
+      const cell = document.createElement("div");
+      cell.className = className;
+      cell.textContent = text;
+      return cell;
+    }
+
+    function padLeftChars(value, width) {
+      const chars = String(value).split("");
+      while (chars.length < width) chars.unshift("");
+      return chars;
+    }
+
+    function renderStandardRows(rows, helperRows = []) {
+      const grid = document.createElement("div");
+      grid.className = "vertical-grid";
+      const maxLen = Math.max(...rows.map(row => String(row.value).length), String(state.problem.answer).length);
+
+      helperRows.forEach(helper => {
+        const row = document.createElement("div");
+        row.className = `row ${helper.kind}-row`;
+        row.appendChild(makeCell("", "cell operator-cell"));
+        padLeftChars("", maxLen).forEach((_, index) => {
+          const value = helper.values[index] || "";
+          if (value) {
+            row.appendChild(makeCell(value, "helper-mark"));
+          } else {
+            row.appendChild(makeCell(""));
+          }
+        });
+        grid.appendChild(row);
+      });
+
+      rows.forEach((rowData, rowIndex) => {
+        const row = document.createElement("div");
+        row.className = "row";
+        row.appendChild(makeCell(rowData.operator || "", "cell operator-cell"));
+        const chars = padLeftChars(rowData.value, maxLen);
+        chars.forEach((char, index) => {
+          row.appendChild(makeCell(char, "cell"));
+        });
+        grid.appendChild(row);
+      });
+
+      const line = document.createElement("div");
+      line.className = "line-row";
+      grid.appendChild(line);
+
+      const answerRow = document.createElement("div");
+      answerRow.className = "row";
+      answerRow.appendChild(makeCell("", "cell operator-cell"));
+      padLeftChars(state.problem.answer, maxLen).forEach((char, index) => {
+        answerRow.appendChild(makeInput(char, "answer", index));
+      });
+      grid.appendChild(answerRow);
+      els.workArea.appendChild(grid);
+    }
+
+    function renderAddition() {
+      const { a, b, answer } = state.problem;
+      els.equation.textContent = `${a} + ${b} = `;
+      const helperRows = [];
+      if (state.mode === "step") {
+        const width = Math.max(String(a).length, String(b).length, String(answer).length);
+        const aRev = padLeftChars(a, width).reverse();
+        const bRev = padLeftChars(b, width).reverse();
+        const carries = Array(width).fill("");
+        let carry = 0;
+        for (let i = 0; i < width; i++) {
+          const sum = Number(aRev[i] || 0) + Number(bRev[i] || 0) + carry;
+          carry = sum >= 10 ? 1 : 0;
+          if (carry && i < width - 1) carries[width - 2 - i] = "1";
+        }
+        helperRows.push({ kind: "carry", values: carries });
+      }
+      renderStandardRows([{ value: a }, { value: b, operator: "+" }], helperRows);
+      setHint("先从个位开始相加，有进位就把 1 写到左边一位上方。");
+    }
+
+    function renderSubtraction() {
+      const { a, b, answer } = state.problem;
+      els.equation.textContent = `${a} - ${b} = `;
+      const helperRows = [];
+      if (state.mode === "step") {
+        const width = Math.max(String(a).length, String(b).length, String(answer).length);
+        const aRev = padLeftChars(a, width).map(char => Number(char || 0)).reverse();
+        const bRev = padLeftChars(b, width).map(char => Number(char || 0)).reverse();
+        const borrows = Array(width).fill("");
+        for (let i = 0; i < width; i++) {
+          if (aRev[i] < bRev[i]) {
+            if (i < width - 1) borrows[width - 2 - i] = "1";
+            aRev[i] += 10;
+            aRev[i + 1] -= 1;
+          }
+        }
+        helperRows.push({ kind: "borrow", values: borrows });
+      }
+      renderStandardRows([{ value: a }, { value: b, operator: "-" }], helperRows);
+      setHint("从个位开始减，不够减时向左边一位借 1。");
+    }
+
+    function renderMultiplication() {
+      const { a, b, answer, partials } = state.problem;
+      els.equation.textContent = `${a} × ${b} = `;
+      if (state.mode === "answer" || String(b).length === 1) {
+        renderStandardRows([{ value: a }, { value: b, operator: "×" }], []);
+        setHint(String(b).length === 1 ? "先算个位乘法，再填写最终结果。" : "当前是只填答案模式，填写最终乘积。");
+        return;
+      }
+
+      const width = Math.max(String(answer).length, String(a).length, String(b).length);
+      const grid = document.createElement("div");
+      grid.className = "vertical-grid";
+
+      [{ value: a }, { value: b, operator: "×" }].forEach((rowData, rowIndex) => {
+        const row = document.createElement("div");
+        row.className = "row";
+        row.appendChild(makeCell(rowData.operator || "", "cell operator-cell"));
+        padLeftChars(rowData.value, width).forEach((char, index) => {
+          row.appendChild(makeCell(char, "cell"));
+        });
+        grid.appendChild(row);
+      });
+
+      const line = document.createElement("div");
+      line.className = "line-row";
+      grid.appendChild(line);
+
+      partials.forEach((partial, partialIndex) => {
+        const row = document.createElement("div");
+        row.className = "row";
+        row.appendChild(makeCell("", "cell operator-cell"));
+        const chars = Array(width).fill("");
+        const partialDigits = digitsOf(partial.value);
+        const end = width - 1 - partial.shift;
+        const start = end - partialDigits.length + 1;
+        partialDigits.forEach((digit, digitIndex) => {
+          chars[start + digitIndex] = digit;
+        });
+        chars.forEach((char, index) => {
+          row.appendChild(char ? makeInput(char, "partial", partialIndex * width + index) : makeCell(""));
+        });
+        grid.appendChild(row);
+      });
+
+      const secondLine = document.createElement("div");
+      secondLine.className = "partial-line";
+      grid.appendChild(secondLine);
+
+      const answerRow = document.createElement("div");
+      answerRow.className = "row";
+      answerRow.appendChild(makeCell("", "cell operator-cell"));
+      padLeftChars(answer, width).forEach((char, index) => {
+        answerRow.appendChild(makeInput(char, "answer", index));
+      });
+      grid.appendChild(answerRow);
+      els.workArea.appendChild(grid);
+      setHint("先填写每一行部分积，最后把部分积相加得到总乘积。");
+    }
+
+    function renderDivision() {
+      const problem = state.problem;
+      els.equation.textContent = `${problem.dividend} ÷ ${problem.divisor} = `;
+
+      if (state.mode === "answer") {
+        renderDivisionAnswerOnly();
+        setHint("填写上方商的每一位，完成后会检查余数。");
+        return;
+      }
+
+      const grid = document.createElement("div");
+      grid.className = "division-work";
+      const dividendDigits = digitsOf(problem.dividend);
+      grid.style.setProperty("--cols", `45px 20px repeat(${dividendDigits.length}, 45px)`);
+
+      const quotientRow = document.createElement("div");
+      quotientRow.className = "division-row";
+      quotientRow.appendChild(makeCell("", "division-cell"));
+      quotientRow.appendChild(makeCell("", "division-cell"));
+      const firstChunkLastPos = problem.steps[0].chunkEnd;
+      dividendDigits.forEach((_, pos) => {
+        const stepIndex = pos - firstChunkLastPos;
+        if (stepIndex >= 0 && stepIndex < problem.steps.length) {
+          quotientRow.appendChild(makeInput(problem.steps[stepIndex].quotientDigit, "division", stepIndex, "division-input"));
+        } else {
+          quotientRow.appendChild(makeCell("", "division-cell"));
+        }
+      });
+      grid.appendChild(quotientRow);
+
+      const dividendRow = document.createElement("div");
+      dividendRow.className = "division-row";
+      dividendRow.appendChild(makeCell(problem.divisor, "division-cell divisor"));
+      const bracket = document.createElement("div");
+      bracket.className = "bracket";
+      dividendRow.appendChild(bracket);
+      dividendDigits.forEach(digit => dividendRow.appendChild(makeCell(digit, "division-cell dividend-top")));
+      grid.appendChild(dividendRow);
+
+      problem.steps.forEach((step, index) => {
+        grid.appendChild(renderDivisionNumberRow("product", step.chunkEnd, index, "product-digit"));
+        const productStart = Math.max(0, step.chunkEnd - String(step.product).length + 1);
+        grid.appendChild(renderDivisionRuleRow(productStart, step.chunkEnd, index));
+        grid.appendChild(renderDivisionNumberRow("remainder", step.chunkEnd, index, "remainder-digit", step.nextDropPos));
+      });
+
+      els.workArea.appendChild(grid);
+      setHint("从最高位商开始输入。输入任何数字都会显示乘积、余数和落位。");
+    }
+
+    function renderDivisionAnswerOnly() {
+      const problem = state.problem;
+      const grid = document.createElement("div");
+      grid.className = "division-work";
+      const dividendDigits = digitsOf(problem.dividend);
+      grid.style.setProperty("--cols", `45px 20px repeat(${dividendDigits.length}, 45px)`);
+      const quotientRow = document.createElement("div");
+      quotientRow.className = "division-row";
+      quotientRow.appendChild(makeCell("", "division-cell"));
+      quotientRow.appendChild(makeCell("", "division-cell"));
+      const quotientDigits = digitsOf(problem.quotient);
+      const firstChunkLastPos = problem.steps[0].chunkEnd;
+      dividendDigits.forEach((_, pos) => {
+        const qIndex = pos - firstChunkLastPos;
+        if (qIndex >= 0 && qIndex < quotientDigits.length) {
+          quotientRow.appendChild(makeInput(quotientDigits[qIndex], "answer", qIndex, "division-input"));
+        } else {
+          quotientRow.appendChild(makeCell("", "division-cell"));
+        }
+      });
+      grid.appendChild(quotientRow);
+      const dividendRow = document.createElement("div");
+      dividendRow.className = "division-row";
+      dividendRow.appendChild(makeCell(problem.divisor, "division-cell divisor"));
+      const bracket = document.createElement("div");
+      bracket.className = "bracket";
+      dividendRow.appendChild(bracket);
+      dividendDigits.forEach(digit => dividendRow.appendChild(makeCell(digit, "division-cell dividend-top")));
+      grid.appendChild(dividendRow);
+      els.workArea.appendChild(grid);
+    }
+
+    function renderDivisionNumberRow(kind, chunkEnd, index, className, dropPos = null) {
+      const problem = state.problem;
+      const row = document.createElement("div");
+      row.className = "division-row hidden";
+      row.dataset.kind = kind;
+      row.dataset.step = index;
+      row.dataset.chunkEnd = chunkEnd;
+      if (dropPos !== null) row.dataset.dropPos = dropPos;
+      row.appendChild(makeCell("", "division-cell"));
+      row.appendChild(makeCell("", "division-cell"));
+      digitsOf(problem.dividend).forEach((_, pos) => {
+        const cell = makeCell("", `division-cell ${className}`);
+        cell.dataset.pos = pos;
+        row.appendChild(cell);
+      });
+      return row;
+    }
+
+    function renderDivisionRuleRow(start, end, index) {
+      const row = document.createElement("div");
+      row.className = "division-row rule-row hidden";
+      row.dataset.kind = "rule";
+      row.dataset.step = index;
+      row.appendChild(makeCell("", "division-cell"));
+      row.appendChild(makeCell("", "division-cell"));
+      digitsOf(state.problem.dividend).forEach((_, pos) => {
+        const cell = makeCell("", "division-cell");
+        if (pos >= start && pos <= end) cell.classList.add("division-line");
+        row.appendChild(cell);
+      });
+      return row;
+    }
+
+    function bindInputs() {
+      const inputs = [...els.workArea.querySelectorAll("input")];
+      const flowInputs = getInputFlow(inputs);
+      inputs.forEach((input, index) => {
+        input.addEventListener("input", event => {
+          event.target.value = event.target.value.replace(/\D/g, "").slice(0, 1);
+          validateInput(event.target, flowInputs.indexOf(event.target), flowInputs);
+        });
+        input.addEventListener("keydown", event => {
+          const flowIndex = flowInputs.indexOf(event.target);
+          if (event.key === "Backspace" && !event.target.value && flowIndex > 0) {
+            flowInputs[flowIndex - 1].focus();
+          }
+          if (event.key === "Enter" && state.completed) {
+            renderProblem();
+          }
+        });
+      });
+      document.onkeydown = event => {
+        if (event.key === "Enter" && state.completed) {
+          renderProblem();
+        }
+      };
+    }
+
+    function getInputFlow(inputs) {
+      if (state.op === "div") return inputs;
+      const rows = [];
+      inputs.forEach(input => {
+        const row = input.closest(".row");
+        let bucket = rows.find(item => item.row === row);
+        if (!bucket) {
+          bucket = { row, inputs: [] };
+          rows.push(bucket);
+        }
+        bucket.inputs.push(input);
+      });
+      return rows.flatMap(bucket => bucket.inputs.reverse());
+    }
+
+    function validateInput(input, index, inputs) {
+      if (!input.value) {
+        input.classList.remove("correct", "wrong");
+        if (state.op === "div" && state.mode === "step" && input.dataset.role === "division") {
+          clearDivisionFromStep(Number(input.dataset.index), inputs);
+          setHint("这一位已清空，下面的计算过程也已同步收回。");
+        }
+        updateEquationDisplay();
+        return;
+      }
+
+      const correct = input.value === String(input.dataset.expected);
+      input.classList.toggle("correct", correct);
+      input.classList.toggle("wrong", !correct);
+      updateEquationDisplay();
+
+      if (!correct && !state.problem.markedWrong) {
+        state.problem.markedWrong = true;
+        addMistake();
+      }
+
+      if (state.op === "div" && state.mode === "step" && input.dataset.role === "division") {
+        handleDivisionStepInput(input, correct, inputs);
+      } else {
+        showInputHint(input, correct);
+      }
+
+      if (state.op !== "div" && input.value) {
+        const next = inputs[index + 1];
+        if (next) next.focus();
+      } else if (correct && !(state.op === "div" && state.mode === "step" && input.dataset.role === "division" && !correct)) {
+        const next = inputs[index + 1];
+        if (next) next.focus();
+      }
+
+      checkCompletion();
+    }
+
+    function showInputHint(input, correct) {
+      const expected = input.dataset.expected;
+      const typed = input.value;
+      const role = input.dataset.role;
+      if (correct) {
+        if (role === "carry") {
+          setHint("<span class=\"good\">进位标记正确。</span><br>这一列相加超过 9，要把 1 写到左边一位上方。");
+        } else if (role === "borrow") {
+          setHint("<span class=\"good\">借位标记正确。</span><br>这一列不够减，需要向左边一位借 1。");
+        } else if (role === "partial") {
+          setHint("<span class=\"good\">部分积这一位正确。</span><br>继续沿着这一行把乘法结果填完整。");
+        } else {
+          setHint("<span class=\"good\">这一位正确。</span><br>继续填写下一格。");
+        }
+        return;
+      }
+
+      if (role === "carry") {
+        setHint(`<span class="bad">这里的进位应填 ${expected}。</span><br>检查右边那一列相加后是否超过 9。`);
+      } else if (role === "borrow") {
+        setHint(`<span class="bad">这里的借位标记应填 ${expected}。</span><br>如果当前位不够减，就要从左边借 1。`);
+      } else if (role === "partial") {
+        setHint(`<span class="bad">你填了 ${typed}，这一位应是 ${expected}。</span><br>先算当前乘数位和被乘数的部分积，再注意对齐。`);
+      } else {
+        setHint(`<span class="bad">你填了 ${typed}，这一位应是 ${expected}。</span><br>从个位开始重新核对这一列。`);
+      }
+    }
+
+    function updateEquationDisplay() {
+      if (!state.problem) return;
+      const p = state.problem;
+      let typed = "";
+      if (p.op === "div") {
+        const quotientInputs = [...els.workArea.querySelectorAll("input")]
+          .filter(input => input.dataset.role === "division" || input.dataset.role === "answer");
+        typed = quotientInputs.map(input => input.value || "").join("");
+        const quotientComplete = quotientInputs.length > 0
+          && quotientInputs.every(input => input.value)
+          && quotientInputs.every(input => input.value === String(input.dataset.expected));
+        const resultText = quotientComplete && p.remainder > 0
+          ? `${typed} 余 ${p.remainder}`
+          : typed;
+        els.equation.textContent = `${p.dividend} ÷ ${p.divisor} = ${resultText}`;
+        return;
+      }
+
+      const answerInputs = [...els.workArea.querySelectorAll('input[data-role="answer"]')];
+      typed = answerInputs.map(input => input.value || "").join("");
+      if (p.op === "add") els.equation.textContent = `${p.a} + ${p.b} = ${typed}`;
+      if (p.op === "sub") els.equation.textContent = `${p.a} - ${p.b} = ${typed}`;
+      if (p.op === "mul") els.equation.textContent = `${p.a} × ${p.b} = ${typed}`;
+    }
+
+    function handleDivisionStepInput(input, correct, inputs) {
+      const stepIndex = Number(input.dataset.index);
+      const typed = Number(input.value || 0);
+      const step = state.problem.steps[stepIndex];
+      const product = typed * state.problem.divisor;
+      const remainder = step.currentValue - product;
+      showDivisionRows(stepIndex);
+      updateDivisionNumberRow(stepIndex, "product", product);
+      updateDivisionNumberRow(stepIndex, "remainder", remainder);
+      setHint(
+        `当前组 ${step.currentValue}，输入 ${typed}。<br>` +
+        `<span class="good">乘积：${typed} × ${state.problem.divisor} = ${product}</span><br>` +
+        `<span class="bad">余数：${step.currentValue} - ${product} = ${remainder}</span>` +
+        (correct ? "<br><span class=\"good\">这一位正确。</span>" : `<br><span class="bad">正确商是 ${step.quotientDigit}。</span>`)
+      );
+      if (!correct) input.focus();
+      inputs.forEach(nextInput => {
+        if (Number(nextInput.dataset.index) > stepIndex) {
+          const nextStep = Number(nextInput.dataset.index);
+          if (nextStep > stepIndex && !correct) nextInput.disabled = true;
+        }
+      });
+      if (correct) {
+        const next = inputs.find(nextInput => Number(nextInput.dataset.index) === stepIndex + 1);
+        if (next) {
+          next.disabled = false;
+          setTimeout(() => next.focus(), 40);
+        }
+      }
+    }
+
+    function showDivisionRows(stepIndex) {
+      els.workArea.querySelectorAll(`[data-step="${stepIndex}"]`).forEach(row => {
+        row.classList.remove("hidden");
+      });
+    }
+
+    function clearDivisionFromStep(stepIndex, inputs) {
+      inputs.forEach(nextInput => {
+        const nextIndex = Number(nextInput.dataset.index);
+        if (nextIndex > stepIndex) {
+          nextInput.value = "";
+          nextInput.classList.remove("correct", "wrong");
+          nextInput.disabled = true;
+        }
+      });
+
+      els.workArea.querySelectorAll("[data-step]").forEach(row => {
+        const rowStep = Number(row.dataset.step);
+        if (rowStep < stepIndex) return;
+        row.classList.add("hidden");
+        row.querySelectorAll("[data-pos]").forEach(cell => {
+          cell.textContent = "";
+          cell.classList.remove("drop-digit", "drop-source");
+          cell.style.removeProperty("--drop-line-height");
+        });
+      });
+    }
+
+    function updateDivisionNumberRow(stepIndex, kind, value) {
+      const row = els.workArea.querySelector(`[data-step="${stepIndex}"][data-kind="${kind}"]`);
+      if (!row) return;
+      const chunkEnd = Number(row.dataset.chunkEnd);
+      const text = String(value);
+      const isNegative = text.startsWith("-");
+      const chars = text.replace("-", "").split("");
+      const start = Math.max(0, chunkEnd - chars.length + 1);
+      row.querySelectorAll("[data-pos]").forEach(cell => {
+        const pos = Number(cell.dataset.pos);
+        cell.textContent = "";
+        cell.classList.remove("drop-digit");
+        cell.classList.remove("drop-source");
+        cell.style.removeProperty("--drop-line-height");
+        if (pos >= start && pos <= chunkEnd) {
+          const charIndex = pos - start;
+          cell.textContent = charIndex === 0 && isNegative ? `-${chars[charIndex]}` : chars[charIndex];
+        }
+        if (kind === "remainder" && row.dataset.dropPos && Number(row.dataset.dropPos) === pos) {
+          const digit = String(state.problem.dividend)[pos];
+          cell.textContent = cell.textContent ? `${cell.textContent}${digit}` : digit;
+          cell.style.setProperty("--drop-line-height", `${58 + stepIndex * 103}px`);
+          cell.classList.add("drop-digit");
+          cell.classList.add("drop-source");
+        }
+      });
+    }
+
+    function checkCompletion() {
+      const inputs = [...els.workArea.querySelectorAll("input")];
+      const allFilled = inputs.length > 0 && inputs.every(input => input.value);
+      const allCorrect = inputs.every(input => input.value === String(input.dataset.expected));
+      if (!allFilled || state.completed) return;
+
+      if (allCorrect) {
+        completeProblem(true);
+      } else {
+        if (!state.problem.markedWrong) {
+          state.problem.markedWrong = true;
+          addMistake();
+        }
+        state.streak = 0;
+        updateStats();
+        saveProgress();
+        setHint("<span class=\"bad\">有几位还不对，红色框里可以再改一次。</span>");
+      }
+    }
+
+    function completeProblem(success) {
+      state.completed = true;
+      state.total += 1;
+      if (success) {
+        state.score += 10;
+        state.streak += 1;
+      } else {
+        state.streak = 0;
+      }
+      state.history.unshift({
+        success,
+        text: equationTextForHistory()
+      });
+      state.history = state.history.slice(0, 10);
+      if (state.problem.markedWrong) addMistake();
+      els.problemCard.classList.toggle("completed", success);
+      setHint(success ? completionMessage() : "<span class=\"bad\">这题还没通过。</span>");
+      updateStats();
+      renderHistory();
+      renderMistakes();
+      saveProgress();
+    }
+
+    function completionMessage() {
+      if (state.problem.op === "div" && state.problem.remainder > 0) {
+        return `<span class="good">✓ 答对了！商 ${state.problem.quotient}，余 ${state.problem.remainder}。按 Enter 键进入下一题</span>`;
+      }
+      return "<span class=\"good\">✓ 答对了！按 Enter 键进入下一题</span>";
+    }
+
+    function addMistake() {
+      const signature = equationTextForHistory();
+      if (state.mistakes.some(item => item.signature === signature)) return;
+      state.mistakes.unshift({
+        signature,
+        op: state.problem.op,
+        difficulty: state.difficulty,
+        mode: state.mode,
+        problem: JSON.parse(JSON.stringify(state.problem)),
+        time: new Date().toLocaleString()
+      });
+      state.mistakes = state.mistakes.slice(0, 30);
+      renderMistakes();
+      saveProgress();
+    }
+
+    function equationTextForHistory() {
+      const p = state.problem;
+      if (p.op === "add") return `${p.a}+${p.b}`;
+      if (p.op === "sub") return `${p.a}-${p.b}`;
+      if (p.op === "mul") return `${p.a}×${p.b}`;
+      return `${p.dividend}÷${p.divisor}`;
+    }
+
+    function updateStats() {
+      els.score.textContent = state.score;
+      els.streak.textContent = state.streak;
+      els.total.textContent = state.total;
+    }
+
+    function renderHistory() {
+      els.historyList.innerHTML = "";
+      if (!state.history.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty-state";
+        empty.textContent = "还没有记录";
+        els.historyList.appendChild(empty);
+        return;
+      }
+      state.history.forEach(item => {
+        const row = document.createElement("div");
+        row.className = `history-item ${item.success ? "pass" : "fail"}`;
+        row.innerHTML = `<span>${item.text}</span><span class="icon">${item.success ? "✓" : "×"}</span>`;
+        els.historyList.appendChild(row);
+      });
+    }
+
+    function renderMistakes() {
+      els.mistakeList.innerHTML = "";
+      els.retryMistakeButton.disabled = state.mistakes.length === 0;
+      els.clearMistakesButton.disabled = state.mistakes.length === 0;
+      if (!state.mistakes.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty-state";
+        empty.textContent = "暂无错题";
+        els.mistakeList.appendChild(empty);
+        return;
+      }
+      state.mistakes.slice(0, 8).forEach(item => {
+        const row = document.createElement("div");
+        row.className = "mistake-item";
+        row.innerHTML = `<strong>${item.signature}</strong><span>${opNames[item.op]} · ${item.time}</span>`;
+        els.mistakeList.appendChild(row);
+      });
+    }
+
+    function saveProgress() {
+      const payload = {
+        score: state.score,
+        streak: state.streak,
+        total: state.total,
+        history: state.history,
+        mistakes: state.mistakes
+      };
+      localStorage.setItem(storageKey, JSON.stringify(payload));
+    }
+
+    function loadProgress() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey) || "{}");
+        state.score = Number(saved.score || 0);
+        state.streak = Number(saved.streak || 0);
+        state.total = Number(saved.total || 0);
+        state.history = Array.isArray(saved.history) ? saved.history : [];
+        state.mistakes = Array.isArray(saved.mistakes) ? saved.mistakes : [];
+      } catch (error) {
+        state.history = [];
+        state.mistakes = [];
+      }
+    }
+
+    function setHint(html) {
+      els.hintBody.innerHTML = html;
+    }
+
+    function focusFirstInput() {
+      const first = getInputFlow([...els.workArea.querySelectorAll("input:not([disabled])")])[0];
+      if (first) setTimeout(() => first.focus(), 50);
+      if (state.op === "div" && state.mode === "step") {
+        const inputs = [...els.workArea.querySelectorAll(".division-input")];
+        inputs.forEach((input, index) => {
+          input.disabled = index > 0;
+        });
+      }
+    }
+
+    function refreshDrillOptions() {
+      const options = drillOptions[state.op];
+      els.drillType.innerHTML = "";
+      options.forEach(([value, label]) => {
+        const option = document.createElement("option");
+        option.value = value;
+        option.textContent = label;
+        els.drillType.appendChild(option);
+      });
+      if (!options.some(([value]) => value === state.drillType)) {
+        state.drillType = "auto";
+      }
+      els.drillType.value = state.drillType;
+    }
+
+    function syncOperationButtons() {
+      document.querySelectorAll("[data-op]").forEach(item => {
+        item.classList.toggle("active", item.dataset.op === state.op);
+      });
+      document.querySelectorAll("[data-mode]").forEach(item => {
+        item.classList.toggle("active", item.dataset.mode === state.mode);
+      });
+      els.difficulty.value = state.difficulty;
+    }
+
+    function retryLatestMistake() {
+      if (!state.mistakes.length) return;
+      const item = state.mistakes.shift();
+      state.op = item.op;
+      state.mode = item.mode || "step";
+      state.difficulty = item.difficulty || "easy";
+      state.drillType = "auto";
+      const problem = JSON.parse(JSON.stringify(item.problem));
+      delete problem.markedWrong;
+      syncOperationButtons();
+      refreshDrillOptions();
+      renderMistakes();
+      saveProgress();
+      renderProblem(problem);
+    }
+
+    document.querySelectorAll("[data-op]").forEach(button => {
+      button.addEventListener("click", () => {
+        state.op = button.dataset.op;
+        state.drillType = "auto";
+        syncOperationButtons();
+        refreshDrillOptions();
+        renderProblem();
+      });
+    });
+
+    document.querySelectorAll("[data-mode]").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll("[data-mode]").forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        state.mode = button.dataset.mode;
+        renderProblem();
+      });
+    });
+
+    els.difficulty.addEventListener("change", event => {
+      state.difficulty = event.target.value;
+      renderProblem();
+    });
+
+    els.drillType.addEventListener("change", event => {
+      state.drillType = event.target.value;
+      renderProblem();
+    });
+
+    els.retryMistakeButton.addEventListener("click", retryLatestMistake);
+
+    els.clearMistakesButton.addEventListener("click", () => {
+      state.mistakes = [];
+      renderMistakes();
+      saveProgress();
+    });
+
+    els.nextButton.addEventListener("click", () => renderProblem());
+
+    loadProgress();
+    syncOperationButtons();
+    refreshDrillOptions();
+    renderHistory();
+    renderMistakes();
+    renderProblem();
+  </script>
 </body>
 </html>
