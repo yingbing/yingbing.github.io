@@ -34,6 +34,8 @@
       color: var(--ink);
       font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
       letter-spacing: 0;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
     }
 
     button,
@@ -46,11 +48,13 @@
       -webkit-appearance: none;
       appearance: none;
       min-width: 0;
+      touch-action: manipulation;
     }
 
     button {
       border: 0;
       cursor: pointer;
+      touch-action: manipulation;
     }
 
     .app-shell {
@@ -247,6 +251,9 @@
       margin: 0 auto;
       overflow-x: auto;
       padding: 8px 8px 18px;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
+      scroll-padding-inline: 24px;
     }
 
     .vertical-grid {
@@ -488,7 +495,7 @@
     }
 
     .division-work {
-      --cols: 45px 20px repeat(4, 45px);
+      --cols: var(--cell) 20px repeat(4, var(--cell));
       display: grid;
       row-gap: 1px;
       column-gap: 0;
@@ -553,14 +560,28 @@
     .bracket {
       height: var(--cell);
       border-left: 3px solid var(--strong-line);
-      border-top: 3px solid var(--strong-line);
       align-self: stretch;
       margin-right: -1px;
     }
 
     .dividend-top {
-      border-top: 3px solid var(--strong-line);
+      position: relative;
       align-self: stretch;
+    }
+
+    .bracket::before,
+    .dividend-top::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      right: -1px;
+      top: 0;
+      height: 3px;
+      background: var(--strong-line);
+    }
+
+    .bracket {
+      position: relative;
     }
 
     .top-rule {
@@ -606,9 +627,19 @@
     }
 
     .division-line {
+      position: relative;
       height: 4px;
-      border-top: 2px solid var(--strong-line);
       align-self: center;
+    }
+
+    .division-line::before {
+      content: "";
+      position: absolute;
+      left: -1px;
+      right: -1px;
+      top: 1px;
+      height: 2px;
+      background: var(--strong-line);
     }
 
     .empty-state {
@@ -617,9 +648,10 @@
       padding: 8px 0;
     }
 
-    @media (max-width: 980px) {
+    @media (max-width: 1180px) {
       .workspace {
         grid-template-columns: 1fr;
+        width: min(920px, calc(100vw - 28px));
       }
 
       .side {
@@ -638,27 +670,131 @@
       }
     }
 
+    @media (hover: none) and (pointer: coarse) {
+      .segmented button,
+      .primary-button,
+      select,
+      .ghost-button {
+        min-height: 44px;
+      }
+
+      .digit-input,
+      .division-input {
+        caret-color: var(--primary);
+      }
+    }
+
     @media (max-width: 760px) {
       :root {
-        --cell: 40px;
+        --cell: 38px;
+      }
+
+      body {
+        padding-bottom: calc(74px + env(safe-area-inset-bottom));
       }
 
       .topbar {
         align-items: flex-start;
         flex-direction: column;
+        gap: 12px;
+        padding: 14px 16px;
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand h1 {
+        font-size: 18px;
+      }
+
+      .stats {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .stat-pill {
+        flex: 1;
+        justify-content: center;
+        min-width: 0;
+        padding-inline: 8px;
       }
 
       .workspace {
-        width: calc(100vw - 20px);
-        margin-top: 10px;
+        width: 100%;
+        margin: 0;
+        gap: 10px;
       }
 
       .controls {
         grid-template-columns: 1fr;
+        margin: 0;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        padding: 10px;
+      }
+
+      .control-group {
+        gap: 8px;
+      }
+
+      .segmented {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .segmented button {
+        flex: 1 0 auto;
+        min-width: 68px;
+        padding: 0 10px;
+      }
+
+      select,
+      .drill-select,
+      .primary-button {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .primary-button {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: calc(10px + env(safe-area-inset-bottom));
+        z-index: 20;
+        width: auto;
+        height: 52px;
+        box-shadow: 0 12px 32px rgba(37, 99, 235, .26);
+      }
+
+      .problem-card {
+        min-height: 420px;
+        border-left: 0;
+        border-right: 0;
+        border-radius: 0;
+        padding: 14px 10px 16px;
+      }
+
+      .equation-line {
+        position: sticky;
+        top: 0;
+        z-index: 4;
+        background: rgba(255, 255, 255, .96);
+        margin: -2px -10px 14px;
+        padding: 10px;
+        backdrop-filter: blur(8px);
+      }
+
+      .equation {
+        font-size: 21px;
       }
 
       .side {
         grid-template-columns: 1fr;
+        padding: 0 10px 14px;
       }
 
       .equation-line {
@@ -668,6 +804,75 @@
 
       .status-text {
         text-align: left;
+      }
+
+      .work-area {
+        width: 100%;
+        margin: 0;
+        padding: 8px 14px 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfdff;
+      }
+
+      .vertical-grid,
+      .division-work {
+        width: max-content;
+        min-width: max-content;
+      }
+
+      .cell,
+      .digit-input,
+      .small-input {
+        font-size: 24px;
+      }
+
+      .digit-input {
+        width: 36px;
+        height: 36px;
+      }
+
+      .division-cell {
+        font-size: 23px;
+      }
+
+      .division-input {
+        width: 38px;
+        height: 36px;
+        font-size: 21px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      :root {
+        --cell: 36px;
+      }
+
+      .segmented button {
+        min-width: 64px;
+        font-size: 14px;
+      }
+
+      .stat-pill {
+        font-size: 12px;
+      }
+
+      .stat-pill strong {
+        font-size: 16px;
+      }
+
+      .problem-card {
+        padding-inline: 8px;
+      }
+
+      .work-area {
+        padding-inline: 10px;
+      }
+
+      .division-input {
+        width: 36px;
+        height: 34px;
+        font-size: 20px;
       }
     }
   </style>
@@ -706,10 +911,6 @@
           <select id="drillType" class="drill-select" aria-label="专项训练">
             <option value="auto">专项：按难度</option>
           </select>
-          <div class="segmented" aria-label="填写模式">
-            <button type="button" class="active" data-mode="step">分步填写</button>
-            <button type="button" data-mode="answer">只填答案</button>
-          </div>
         </div>
         <button type="button" class="primary-button" id="nextButton">下一题</button>
       </div>
@@ -751,7 +952,6 @@
 <script>
   const state = {
     op: "add",
-    mode: "step",
     difficulty: "easy",
     drillType: "auto",
     problem: null,
@@ -1021,7 +1221,7 @@
     els.problemCard.classList.remove("completed");
     state.problem = forcedProblem || generateProblem();
     els.workArea.innerHTML = "";
-    els.statusText.textContent = `${opNames[state.op]} · ${state.mode === "step" ? "分步填写" : "只填答案"}`;
+    els.statusText.textContent = `${opNames[state.op]} · 分步填写`;
 
     if (state.op === "add") renderAddition();
     if (state.op === "sub") renderSubtraction();
@@ -1109,19 +1309,17 @@
     const { a, b, answer } = state.problem;
     els.equation.textContent = `${a} + ${b} = `;
     const helperRows = [];
-    if (state.mode === "step") {
-      const width = Math.max(String(a).length, String(b).length, String(answer).length);
-      const aRev = padLeftChars(a, width).reverse();
-      const bRev = padLeftChars(b, width).reverse();
-      const carries = Array(width).fill("");
-      let carry = 0;
-      for (let i = 0; i < width; i++) {
-        const sum = Number(aRev[i] || 0) + Number(bRev[i] || 0) + carry;
-        carry = sum >= 10 ? 1 : 0;
-        if (carry && i < width - 1) carries[width - 2 - i] = "1";
-      }
-      helperRows.push({ kind: "carry", values: carries });
+    const width = Math.max(String(a).length, String(b).length, String(answer).length);
+    const aRev = padLeftChars(a, width).reverse();
+    const bRev = padLeftChars(b, width).reverse();
+    const carries = Array(width).fill("");
+    let carry = 0;
+    for (let i = 0; i < width; i++) {
+      const sum = Number(aRev[i] || 0) + Number(bRev[i] || 0) + carry;
+      carry = sum >= 10 ? 1 : 0;
+      if (carry && i < width - 1) carries[width - 2 - i] = "1";
     }
+    helperRows.push({ kind: "carry", values: carries });
     renderStandardRows([{ value: a }, { value: b, operator: "+" }], helperRows);
     setHint("先从个位开始相加，有进位就把 1 写到左边一位上方。");
   }
@@ -1130,20 +1328,18 @@
     const { a, b, answer } = state.problem;
     els.equation.textContent = `${a} - ${b} = `;
     const helperRows = [];
-    if (state.mode === "step") {
-      const width = Math.max(String(a).length, String(b).length, String(answer).length);
-      const aRev = padLeftChars(a, width).map(char => Number(char || 0)).reverse();
-      const bRev = padLeftChars(b, width).map(char => Number(char || 0)).reverse();
-      const borrows = Array(width).fill("");
-      for (let i = 0; i < width; i++) {
-        if (aRev[i] < bRev[i]) {
-          if (i < width - 1) borrows[width - 2 - i] = "1";
-          aRev[i] += 10;
-          aRev[i + 1] -= 1;
-        }
+    const width = Math.max(String(a).length, String(b).length, String(answer).length);
+    const aRev = padLeftChars(a, width).map(char => Number(char || 0)).reverse();
+    const bRev = padLeftChars(b, width).map(char => Number(char || 0)).reverse();
+    const borrows = Array(width).fill("");
+    for (let i = 0; i < width; i++) {
+      if (aRev[i] < bRev[i]) {
+        if (i < width - 1) borrows[width - 2 - i] = "1";
+        aRev[i] += 10;
+        aRev[i + 1] -= 1;
       }
-      helperRows.push({ kind: "borrow", values: borrows });
     }
+    helperRows.push({ kind: "borrow", values: borrows });
     renderStandardRows([{ value: a }, { value: b, operator: "-" }], helperRows);
     setHint("从个位开始减，不够减时向左边一位借 1。");
   }
@@ -1151,9 +1347,9 @@
   function renderMultiplication() {
     const { a, b, answer, partials } = state.problem;
     els.equation.textContent = `${a} × ${b} = `;
-    if (state.mode === "answer" || String(b).length === 1) {
+    if (String(b).length === 1) {
       renderStandardRows([{ value: a }, { value: b, operator: "×" }], []);
-      setHint(String(b).length === 1 ? "先算个位乘法，再填写最终结果。" : "当前是只填答案模式，填写最终乘积。");
+      setHint("先算个位乘法，再填写最终结果。");
       return;
     }
 
@@ -1211,16 +1407,10 @@
     const problem = state.problem;
     els.equation.textContent = `${problem.dividend} ÷ ${problem.divisor} = `;
 
-    if (state.mode === "answer") {
-      renderDivisionAnswerOnly();
-      setHint("填写上方商的每一位，完成后会检查余数。");
-      return;
-    }
-
     const grid = document.createElement("div");
     grid.className = "division-work";
     const dividendDigits = digitsOf(problem.dividend);
-    grid.style.setProperty("--cols", `45px 20px repeat(${dividendDigits.length}, 45px)`);
+    grid.style.setProperty("--cols", `var(--cell) 20px repeat(${dividendDigits.length}, var(--cell))`);
 
     const quotientRow = document.createElement("div");
     quotientRow.className = "division-row";
@@ -1255,38 +1445,6 @@
 
     els.workArea.appendChild(grid);
     setHint("从最高位商开始输入。输入任何数字都会显示乘积、余数和落位。");
-  }
-
-  function renderDivisionAnswerOnly() {
-    const problem = state.problem;
-    const grid = document.createElement("div");
-    grid.className = "division-work";
-    const dividendDigits = digitsOf(problem.dividend);
-    grid.style.setProperty("--cols", `45px 20px repeat(${dividendDigits.length}, 45px)`);
-    const quotientRow = document.createElement("div");
-    quotientRow.className = "division-row";
-    quotientRow.appendChild(makeCell("", "division-cell"));
-    quotientRow.appendChild(makeCell("", "division-cell"));
-    const quotientDigits = digitsOf(problem.quotient);
-    const firstChunkLastPos = problem.steps[0].chunkEnd;
-    dividendDigits.forEach((_, pos) => {
-      const qIndex = pos - firstChunkLastPos;
-      if (qIndex >= 0 && qIndex < quotientDigits.length) {
-        quotientRow.appendChild(makeInput(quotientDigits[qIndex], "answer", qIndex, "division-input"));
-      } else {
-        quotientRow.appendChild(makeCell("", "division-cell"));
-      }
-    });
-    grid.appendChild(quotientRow);
-    const dividendRow = document.createElement("div");
-    dividendRow.className = "division-row";
-    dividendRow.appendChild(makeCell(problem.divisor, "division-cell divisor"));
-    const bracket = document.createElement("div");
-    bracket.className = "bracket";
-    dividendRow.appendChild(bracket);
-    dividendDigits.forEach(digit => dividendRow.appendChild(makeCell(digit, "division-cell dividend-top")));
-    grid.appendChild(dividendRow);
-    els.workArea.appendChild(grid);
   }
 
   function renderDivisionNumberRow(kind, chunkEnd, index, className, dropPos = null) {
@@ -1326,6 +1484,10 @@
     const inputs = [...els.workArea.querySelectorAll("input")];
     const flowInputs = getInputFlow(inputs);
     inputs.forEach((input, index) => {
+      input.addEventListener("focus", event => {
+        event.target.select();
+        keepInputVisible(event.target);
+      });
       input.addEventListener("input", event => {
         event.target.value = event.target.value.replace(/\D/g, "").slice(0, 1);
         validateInput(event.target, flowInputs.indexOf(event.target), flowInputs);
@@ -1347,6 +1509,17 @@
     };
   }
 
+  function keepInputVisible(input) {
+    const area = input.closest(".work-area");
+    if (!area) return;
+    const inputRect = input.getBoundingClientRect();
+    const areaRect = area.getBoundingClientRect();
+    const outOfView = inputRect.left < areaRect.left + 20 || inputRect.right > areaRect.right - 20;
+    if (outOfView) {
+      input.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+    }
+  }
+
   function getInputFlow(inputs) {
     if (state.op === "div") return inputs;
     const rows = [];
@@ -1365,7 +1538,7 @@
   function validateInput(input, index, inputs) {
     if (!input.value) {
       input.classList.remove("correct", "wrong");
-      if (state.op === "div" && state.mode === "step" && input.dataset.role === "division") {
+      if (state.op === "div" && input.dataset.role === "division") {
         clearDivisionFromStep(Number(input.dataset.index), inputs);
         setHint("这一位已清空，下面的计算过程也已同步收回。");
       }
@@ -1383,7 +1556,7 @@
       addMistake();
     }
 
-    if (state.op === "div" && state.mode === "step" && input.dataset.role === "division") {
+    if (state.op === "div" && input.dataset.role === "division") {
       handleDivisionStepInput(input, correct, inputs);
     } else {
       showInputHint(input, correct);
@@ -1392,7 +1565,7 @@
     if (state.op !== "div" && input.value) {
       const next = inputs[index + 1];
       if (next) next.focus();
-    } else if (correct && !(state.op === "div" && state.mode === "step" && input.dataset.role === "division" && !correct)) {
+    } else if (correct && !(state.op === "div" && input.dataset.role === "division" && !correct)) {
       const next = inputs[index + 1];
       if (next) next.focus();
     }
@@ -1562,6 +1735,9 @@
 
   function completeProblem(success) {
     state.completed = true;
+    if (document.activeElement && typeof document.activeElement.blur === "function") {
+      document.activeElement.blur();
+    }
     state.total += 1;
     if (success) {
       state.score += 10;
@@ -1597,7 +1773,6 @@
       signature,
       op: state.problem.op,
       difficulty: state.difficulty,
-      mode: state.mode,
       problem: JSON.parse(JSON.stringify(state.problem)),
       time: new Date().toLocaleString()
     });
@@ -1688,7 +1863,7 @@
   function focusFirstInput() {
     const first = getInputFlow([...els.workArea.querySelectorAll("input:not([disabled])")])[0];
     if (first) setTimeout(() => first.focus(), 50);
-    if (state.op === "div" && state.mode === "step") {
+    if (state.op === "div") {
       const inputs = [...els.workArea.querySelectorAll(".division-input")];
       inputs.forEach((input, index) => {
         input.disabled = index > 0;
@@ -1715,9 +1890,6 @@
     document.querySelectorAll("[data-op]").forEach(item => {
       item.classList.toggle("active", item.dataset.op === state.op);
     });
-    document.querySelectorAll("[data-mode]").forEach(item => {
-      item.classList.toggle("active", item.dataset.mode === state.mode);
-    });
     els.difficulty.value = state.difficulty;
   }
 
@@ -1725,7 +1897,6 @@
     if (!state.mistakes.length) return;
     const item = state.mistakes.shift();
     state.op = item.op;
-    state.mode = item.mode || "step";
     state.difficulty = item.difficulty || "easy";
     state.drillType = "auto";
     const problem = JSON.parse(JSON.stringify(item.problem));
@@ -1743,15 +1914,6 @@
       state.drillType = "auto";
       syncOperationButtons();
       refreshDrillOptions();
-      renderProblem();
-    });
-  });
-
-  document.querySelectorAll("[data-mode]").forEach(button => {
-    button.addEventListener("click", () => {
-      document.querySelectorAll("[data-mode]").forEach(item => item.classList.remove("active"));
-      button.classList.add("active");
-      state.mode = button.dataset.mode;
       renderProblem();
     });
   });
